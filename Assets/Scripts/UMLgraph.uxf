@@ -1,86 +1,132 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>533</x><y>810</y><w>280</w><h>250</h></coordinates><panel_attributes>Player&lt;GameObject&gt;
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1000</x><y>120</y><w>280</w><h>430</h></coordinates><panel_attributes>Player&lt;GameObject&gt;
 --
++ float speed
++ float jumpStrength
+
+- Vector2 movement
 - bool grounded
-+ float speed
-+ float jumpHeight
-- Vector2 velocity
+- bool onWall
+- bool wallOnRight
+
++ float wallSlideSpeed
++ float accelSpeed
++ float deccelSpeed
+
+- Rigidbody2D rb
+- BoxCollider2D attackBox
+- Transform childTrans
+
 + float health
-+ float damage
++ float maxHealth
++ float worldBottom
+- float stunTime
++ Transform spawnPoint
 --
 Start() : void
 Update() : void
-FixedUpdate() : void
-- GroundCheck() : bool
-- WallCheck() : bool
-OnCollisionEnter2D(Collision2D collision) : void
-OnCollision2D(Collision2D collision) : void
-OnCollisionExit2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>613</x><y>520</y><w>100</w><h>30</h></coordinates><panel_attributes>MonoBehaviour</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>653</x><y>540</y><w>30</w><h>290</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>803</x><y>830</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>903</x><y>810</y><w>210</w><h>70</h></coordinates><panel_attributes>RigidBody2D&lt;Component&gt;
+- OnCollisionEnter2D(Collision2D collision) : void
+- OnCollisionStay2D(Collision2D collision) : void
+- OnCollisionExit2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>0</y><w>100</w><h>30</h></coordinates><panel_attributes>MonoBehaviour</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1640</x><y>130</y><w>280</w><h>180</h></coordinates><panel_attributes>EnemyAI&lt;GameObject&gt;
 --
-+ Vector2 velocity
-+ float mass</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>563</x><y>1140</y><w>210</w><h>70</h></coordinates><panel_attributes>SpriteRenderer&lt;Component&gt;
---
-+ Sprite sprite
-+ bool flip</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>653</x><y>1050</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>903</x><y>920</y><w>210</w><h>70</h></coordinates><panel_attributes>CapsuleCollider2D&lt;Component&gt;
---
-+ float radius
-+ float height</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>803</x><y>940</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>193</x><y>804</y><w>210</w><h>80</h></coordinates><panel_attributes>Transform&lt;Component&gt;
---
-+ Vector3 position
-+ Quaternion rotation
-+ Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>393</x><y>834</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>563</x><y>184</y><w>210</w><h>170</h></coordinates><panel_attributes>Enemies&lt;GameObject&gt;
---
-+ float health
 + float speed
-+ float damage
++ float health
++ bool movingRight
++ bool stunned
+- Rigidbody2D rb
 --
 Start() : void
-Update() : void
 FixedUpdate() : void
-- GroundCheck() : bool
-+ TakeDamage() : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>653</x><y>343</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;180;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>203</x><y>274</y><w>210</w><h>80</h></coordinates><panel_attributes>Transform&lt;Component&gt;
+- OnCollisionEnter2D(Collision2D collision) : void
+- OnTriggerEnter2D(Collider2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>130</y><w>210</w><h>70</h></coordinates><panel_attributes>Transform&lt;Component&gt;
 --
-+ Vector3 position
-+ Quaternion rotation
-+ Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>403</x><y>304</y><w>180</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>478</y><w>210</w><h>110</h></coordinates><panel_attributes>Main Camera&lt;GameObject&gt;
+Vector3 position
+Quaternion rotation
+Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>160</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>240</y><w>210</w><h>70</h></coordinates><panel_attributes>Rigidbody2D&lt;Component&gt;
+--
+Vector2 velocity
+float mass
+float drag</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>270</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>350</y><w>210</w><h>90</h></coordinates><panel_attributes>BoxCollider2D&lt;Component&gt;
+--
+Vector2 offset
+bool isTrigger
+Vector2 scale
+bool enabled</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>370</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>480</y><w>210</w><h>90</h></coordinates><panel_attributes>BoxCollider2D&lt;Component&gt;
+--
+Vector2 offset
+bool isTrigger
+Vector2 scale
+bool enabled</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>500</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1130</x><y>20</y><w>490</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>470;10;470;60;10;60;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1360</x><y>140</y><w>210</w><h>70</h></coordinates><panel_attributes>Transform&lt;Component&gt;
+--
+Vector3 position
+Quaternion rotation
+Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1559</x><y>170</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1360</x><y>230</y><w>210</w><h>70</h></coordinates><panel_attributes>Rigidbody2D&lt;Component&gt;
+--
+Vector2 velocity
+float mass
+float drag</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1559</x><y>250</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1360</x><y>320</y><w>210</w><h>90</h></coordinates><panel_attributes>BoxCollider2D&lt;Component&gt;
+--
+Vector2 offset
+bool isTrigger
+Vector2 scale
+bool enabled</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1559</x><y>300</y><w>100</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2280</x><y>140</y><w>280</w><h>150</h></coordinates><panel_attributes>Crate&lt;GameObject&gt;
+--
+- Rigidbody2D rb
+- bool solid
+--
+Start() : void
+FixedUpdate() : void
++ Launch(Vector2 direction): void
+- OnCollisionEnter2D(Collision2D collision) : void
+- OnTriggerEnter2D(Collider2D collider) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1590</x><y>20</y><w>230</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;210;60;210;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1997</x><y>306</y><w>210</w><h>90</h></coordinates><panel_attributes>BoxCollider2D&lt;Component&gt;
+--
+Vector2 offset
+bool isTrigger
+Vector2 scale
+bool enabled</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1997</x><y>216</y><w>210</w><h>70</h></coordinates><panel_attributes>Rigidbody2D&lt;Component&gt;
+--
+Vector2 velocity
+float mass
+float drag</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1997</x><y>126</y><w>210</w><h>70</h></coordinates><panel_attributes>Transform&lt;Component&gt;
+--
+Vector3 position
+Quaternion rotation
+Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1590</x><y>20</y><w>890</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;870;60;870;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>130</y><w>280</w><h>170</h></coordinates><panel_attributes>Player&lt;GameObject&gt;
 --
 + Transform target
++ Vector3 offset
 + float followSpeed
++ float horizontalDirectionOffset
++ float horizontalOffsetSpeed
++ static bool movingRight
++ static bool advancedFocus
+- float xOffsetTarget
+--
+Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>20</y><w>1160</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>1140;10;1140;60;10;60;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>150</y><w>210</w><h>70</h></coordinates><panel_attributes>Transform&lt;Component&gt;
+--
+Vector3 position
+Quaternion rotation
+Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>199</x><y>170</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>270</y><w>210</w><h>70</h></coordinates><panel_attributes>Camera&lt;Component&gt;
+--
++ bool isPerspective</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>199</x><y>290</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>290</y><w>590</w><h>390</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>570;260;570;370;10;370;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1650</x><y>620</y><w>280</w><h>150</h></coordinates><panel_attributes>EnemySpawner&lt;GameObject&gt;
+--
++ GameObject EnemyPrefab
++ float timerMin
++ float timerMax
++ float counter
++ int maxCount
 --
 Start() : void
-Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>528</y><w>130</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>488</y><w>210</w><h>70</h></coordinates><panel_attributes>Camera&lt;Component&gt;
+Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2010</x><y>630</y><w>210</w><h>70</h></coordinates><panel_attributes>Transform&lt;Component&gt;
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>458</y><w>210</w><h>150</h></coordinates><panel_attributes>Crate&lt;GameObject&gt;
+Vector3 position
+Quaternion rotation
+Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1919</x><y>660</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1790</x><y>300</y><w>30</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;320</additional_attributes></element><element><id>Relation</id><coordinates><x>1590</x><y>20</y><w>150</w><h>620</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;500;130;500;130;600</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>620</y><w>280</w><h>90</h></coordinates><panel_attributes>TouchWin&lt;GameObject&gt;
 --
-+ float mass
-+ bool affectedByGravity
-+ float health
-+ GameObject drop
++ GameObject player
++ Transform newLocation
 --
-Start() : void
-Update() : void
-+ GetDrop() : GameObject</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1203</x><y>450</y><w>210</w><h>70</h></coordinates><panel_attributes>RigidBody2D&lt;Component&gt;
+OnCollisionEnter2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1450</x><y>20</y><w>170</w><h>620</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;150;500;10;500;10;600</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1330</x><y>760</y><w>210</w><h>70</h></coordinates><panel_attributes>Transform&lt;Component&gt;
 --
-+ Vector2 velocity
-+ float mass</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>563</x><y>0</y><w>210</w><h>70</h></coordinates><panel_attributes>RigidBody2D&lt;Component&gt;
---
-+ Vector2 velocity
-+ float mass</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>853</x><y>190</y><w>210</w><h>70</h></coordinates><panel_attributes>CapsuleCollider2D&lt;Component&gt;
---
-+ float radius
-+ float height</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>526</y><w>200</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;12</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1203</x><y>550</y><w>210</w><h>50</h></coordinates><panel_attributes>BoxCollider2D&lt;Component&gt;
---
-+ Vector2 Size</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>893</x><y>314</y><w>210</w><h>80</h></coordinates><panel_attributes>Transform&lt;Component&gt;
---
-+ Vector3 position
-+ Quaternion rotation
-+ Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1093</x><y>550</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;18;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1093</x><y>470</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;18;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>763</x><y>210</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>653</x><y>60</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>983</x><y>390</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>203</x><y>524</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>983</x><y>600</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>893</x><y>680</y><w>210</w><h>70</h></coordinates><panel_attributes>SpriteRenderer&lt;Component&gt;
---
-+ Sprite sprite
-+ bool flip</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>203</x><y>180</y><w>210</w><h>70</h></coordinates><panel_attributes>SpriteRenderer&lt;Component&gt;
---
-+ Sprite sprite
-+ bool flip</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>403</x><y>204</y><w>180</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>303</x><y>654</y><w>210</w><h>80</h></coordinates><panel_attributes>Transform&lt;Component&gt;
---
-+ Vector3 position
-+ Quaternion rotation
-+ Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>393</x><y>584</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element></diagram>
+Vector3 position
+Quaternion rotation
+Vector3 scale</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1429</x><y>700</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>540</y><w>370</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50;350;50;350;80</additional_attributes></element><element><id>Relation</id><coordinates><x>2199</x><y>160</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2199</x><y>230</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2199</x><y>280</y><w>100</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;70</additional_attributes></element></diagram>
