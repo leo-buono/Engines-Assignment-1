@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 	private Transform childTrans;
 
 	public float health = 25f;
+	public float maxHealth = 25f;
 	public float worldBottom = 0;
 	private float stunTime = 0;
 	public Transform spawnPoint;
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
 		if (transform.position.y <= worldBottom) {
 			transform.position = spawnPoint.position;
 			rb.velocity = Vector2.zero;
+			health = maxHealth;
 		}
 		
 		if (stunTime > 0f) {
@@ -116,6 +118,7 @@ public class Player : MonoBehaviour
 			if (--health <= 0) {
 				transform.position = spawnPoint.position;
 				rb.velocity = Vector2.zero;
+				health = maxHealth;
 			}
 		}
 	}
