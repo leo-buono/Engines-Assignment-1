@@ -13,12 +13,6 @@ public class Crate : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
 	void FixedUpdate()
 	{
 		//when solid, do best to ignore other physics

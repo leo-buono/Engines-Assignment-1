@@ -16,9 +16,6 @@ public class Player : MonoBehaviour
 	public float accelSpeed = 5f;
 	public float deccelSpeed = 5f;
 
-	public float damage = 5f;
-	public float health = 25f;
-
 	private Rigidbody2D rb;
 	private BoxCollider2D attackBox;
 	private Transform childTrans;
