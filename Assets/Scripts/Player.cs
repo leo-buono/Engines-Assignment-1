@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
 	private BoxCollider2D attackBox;
 	private Transform childTrans;
 
+	public float health = 25f;
+	public float worldBottom = 0;
+	private float stunTime = 0;
+	public Transform spawnPoint;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -39,6 +44,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (transform.position.y <= worldBottom) {
+			transform.position = spawnPoint.position;
+			rb.velocity = Vector2.zero;
+		}
+		
+		if (stunTime > 0f) {
+			stunTime -= Time.deltaTime;
+			if (stunTime <= 0f)
+				stunTime = 0f;
+		}
 		float hori = Input.GetAxis("Horizontal");
 		float verti = Input.GetAxis("Vertical");
 		
@@ -92,6 +107,17 @@ public class Player : MonoBehaviour
 		SmoothFollow.movingRight = movement.x > 0;
 
 		rb.velocity = movement;
+	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (stunTime == 0f && collision.gameObject.layer == 8) {
+			stunTime = 0.5f;
+			if (--health <= 0) {
+				transform.position = spawnPoint.position;
+				rb.velocity = Vector2.zero;
+			}
+		}
 	}
 
 	void OnCollisionStay2D(Collision2D collision)
