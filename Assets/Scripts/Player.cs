@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
 	private BoxCollider2D attackBox;
 	private Transform childTrans;
 
-	public float health = 25f;
 	public float maxHealth = 25f;
 	public float worldBottom = 0;
 	private float stunTime = 0;
@@ -39,7 +38,7 @@ public class Player : MonoBehaviour
 				break;
 			}
 		}
-		
+		SingletonHealth.instance.health = maxHealth;
 	}
 
     // Update is called once per frame
@@ -48,7 +47,8 @@ public class Player : MonoBehaviour
 		if (transform.position.y <= worldBottom) {
 			transform.position = spawnPoint.position;
 			rb.velocity = Vector2.zero;
-			health = maxHealth;
+				ActionAudioPlayer.PlaySound();
+			SingletonHealth.instance.health = maxHealth;
 		}
 		
 		if (stunTime > 0f) {
@@ -56,13 +56,20 @@ public class Player : MonoBehaviour
 			if (stunTime <= 0f)
 				stunTime = 0f;
 		}
+
+
 		float hori = Input.GetAxis("Horizontal");
 		float verti = Input.GetAxis("Vertical");
 		
 		//reset velocity
 		movement.y = rb.velocity.y;
 
-		movement.x = Mathf.Clamp(rb.velocity.x + hori * speed * Time.deltaTime * accelSpeed, -speed, speed);
+		movement.x = rb.velocity.x;
+		//deccel early
+		if (grounded)
+			movement.x = Mathf.Lerp(movement.x, 0, Time.deltaTime * deccelSpeed);
+		
+		movement.x = Mathf.Clamp(movement.x + hori * speed * Time.deltaTime * accelSpeed, -speed, speed);
 
 		if (onWall) {
 			SmoothFollow.advancedFocus = false;
@@ -82,9 +89,6 @@ public class Player : MonoBehaviour
 		}
 
 		if (grounded) {
-			movement.x = Mathf.Lerp(movement.x, 0, Time.deltaTime * deccelSpeed);
-			
-
 			if (Input.GetKeyDown(KeyCode.Space)) {
 				movement.y = jumpStrength;
 				grounded = false;
@@ -115,10 +119,11 @@ public class Player : MonoBehaviour
 	{
 		if (stunTime == 0f && collision.gameObject.layer == 8) {
 			stunTime = 0.5f;
-			if (--health <= 0) {
+			if (--SingletonHealth.instance.health <= 0) {
 				transform.position = spawnPoint.position;
 				rb.velocity = Vector2.zero;
-				health = maxHealth;
+				SingletonHealth.instance.health = maxHealth;
+				ActionAudioPlayer.PlaySound();
 			}
 		}
 	}
