@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 	private BoxCollider2D attackBox;
 	private Transform childTrans;
 
+	public float health = 25f;
 	public float maxHealth = 25f;
 	public float worldBottom = 0;
 	private float stunTime = 0;
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
 				break;
 			}
 		}
-		SingletonHealth.instance.health = maxHealth;
+		health = maxHealth;
 	}
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
 			transform.position = spawnPoint.position;
 			rb.velocity = Vector2.zero;
 				ActionAudioPlayer.PlaySound();
-			SingletonHealth.instance.health = maxHealth;
+			health = maxHealth;
 		}
 		
 		if (stunTime > 0f) {
@@ -119,10 +120,10 @@ public class Player : MonoBehaviour
 	{
 		if (stunTime == 0f && collision.gameObject.layer == 8) {
 			stunTime = 0.5f;
-			if (--SingletonHealth.instance.health <= 0) {
+			if (--health <= 0) {
 				transform.position = spawnPoint.position;
 				rb.velocity = Vector2.zero;
-				SingletonHealth.instance.health = maxHealth;
+				health = maxHealth;
 				ActionAudioPlayer.PlaySound();
 			}
 		}
