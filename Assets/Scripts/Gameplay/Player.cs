@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
 		grounded = false;
 	}
 
-	void ChangeHealth(float change) {
+	public void ChangeHealth(float change) {
 		health += change;
 		if (health > maxHealth)
 			health = maxHealth;
