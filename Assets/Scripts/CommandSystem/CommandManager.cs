@@ -24,17 +24,18 @@ public class CommandManager : MonoBehaviour
 	static int historyPos = 0;
 
 	public GameObject blah;
+	Block blockMaker = new Block();
 
 	void Start()
 	{
 		historyPos = history.Count;
-		Block.prefab = blah;
+		blockMaker.prefab = blah;
 	}
 
     void Update()
     {
 		if (Input.GetKeyDown(KeyCode.G)) {
-			QueueFunction(new SpawnThing(new Block(new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)))));
+			QueueFunction(new SpawnThing(blockMaker, new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f))));
 		}
 
         while (queue.Count > 0) {

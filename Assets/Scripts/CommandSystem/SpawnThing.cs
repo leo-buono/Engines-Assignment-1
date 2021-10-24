@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class SpawnThing : FunctionData
 {
-	public SpawnThing(Spawnable spawnable) {
-		type = spawnable;
+	public SpawnThing(Spawnable factory, Vector3 position) {
+		this.factory = factory;
+		this.position = position;
 	}
 
-	Spawnable type;
+	Spawnable factory;
+	Vector3 position;
 
 	GameObject reference = null;
 
     public void Execute()
     {
-        reference = type.SpawnThing();
+        reference = factory.SpawnThing();
+		reference.transform.position = position;
     }
 
     public void Undo()
