@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : Spawnable
+public class PrefabFactory : Spawnable
 {
 	public GameObject prefab;
-	public Block() {
-}
+	public PrefabFactory() {}
 
     public GameObject SpawnThing() {
 		return GameObject.Instantiate(prefab);

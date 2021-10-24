@@ -24,7 +24,7 @@ public class CommandManager : MonoBehaviour
 	static int historyPos = 0;
 
 	public GameObject blah;
-	Block blockMaker = new Block();
+	PrefabFactory blockMaker = new PrefabFactory();
 
 	void Start()
 	{
