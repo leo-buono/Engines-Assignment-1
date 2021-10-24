@@ -73,11 +73,10 @@ public class Player : MonoBehaviour
 		movement.x = Mathf.Clamp(movement.x + hori * speed * Time.deltaTime * accelSpeed, -speed, speed);
 
 		if (onWall) {
-			SmoothFollow.advancedFocus = false;
 			if (wallOnRight)	movement.x = Mathf.Min(movement.x, 0f);
 			else				movement.x = Mathf.Max(movement.x, 0f);
 
-			if (Input.GetKeyDown(KeyCode.Space)) {
+			if (Input.GetKeyDown(KeyCode.Space) && !grounded) {
 				//diagonal jump
 				movement.y = jumpStrength;
 				if (wallOnRight)	movement.x = -speed;
@@ -139,7 +138,7 @@ public class Player : MonoBehaviour
 			if (!grounded)	grounded = normal.y > 0.5f;
 
 			//wall check for wall slide only if in air and not on wall
-			if (!onWall)	onWall = Mathf.Abs(normal.x) > 0.9f && !grounded;
+			if (!onWall)	onWall = Mathf.Abs(normal.x) > 0.9f;
 			wallOnRight = normal.x < 0f;
 		}
 	}

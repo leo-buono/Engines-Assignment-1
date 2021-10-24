@@ -360,7 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1961168493}
   offset: {x: 0, y: 2.5, z: -15}
-  followSpeed: 5
+  xFollowSpeed: 5
+  yFollowSpeed: 10
   horizontalDirectionalOffset: 5
   horizontalOffsetSpeed: 2.5
 --- !u!20 &519420031
@@ -399,7 +400,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 0
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
