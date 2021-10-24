@@ -12,11 +12,13 @@ public class DeathAudioPlayer : MonoBehaviour
     }
 
     private void OnEnable() {
-		ActionAudioPlayer.died += PlayAudio;
+		ActionAudioPlayer.instance.died += PlayAudio;
+		ActionAudioPlayer.instance.damaged += PlayAudio;
     }
 
     private void OnDisable() {
-		ActionAudioPlayer.died -= PlayAudio;
+		ActionAudioPlayer.instance.died -= PlayAudio;
+		ActionAudioPlayer.instance.damaged -= PlayAudio;
     }
 
     private void PlayAudio(){

@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
 			--health;
 			if (health < 0) {
 				Destroy(gameObject);
-				ActionAudioPlayer.PlaySound();
+				ActionAudioPlayer.instance.Die();
 				return;
 			}
 			stunned = true;

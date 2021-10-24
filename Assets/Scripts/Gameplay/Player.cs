@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	public GameObject prefab;
 	public float speed = 5f;
 	public float jumpStrength = 10f;
 
@@ -157,8 +158,24 @@ public class Player : MonoBehaviour
 			// health = maxHealth;
 			// transform.position = spawnPoint.position;
 			// rb.velocity = Vector2.zero;
-			ActionAudioPlayer.PlaySound();
+			ActionAudioPlayer.instance.Die();
 			SceneChanger.LoadDed();
 		}
+		else if (change < 0) {
+			ActionAudioPlayer.instance.Damaged();
+		}
+	}
+
+	public void Particles() {
+		Destroy(Instantiate(prefab, transform.position, Quaternion.identity), 2f);
+	}
+
+	void OnEnable()
+	{
+		ActionAudioPlayer.instance.damaged += Particles;
+	}
+	void OnDisable()
+	{
+		ActionAudioPlayer.instance.damaged -= Particles;
 	}
 }

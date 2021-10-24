@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EditorManager : MonoBehaviour
 {
-	static bool paused = true;
+	static bool paused = false;
 
     // Start is called before the first frame update
     void Start()
