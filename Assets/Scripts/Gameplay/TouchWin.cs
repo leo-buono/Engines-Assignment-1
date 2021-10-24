@@ -5,11 +5,11 @@ using UnityEngine;
 public class TouchWin : MonoBehaviour
 {
 	public GameObject player;
-	public Transform newLocation;
+    public SceneChanger manager;
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject == player)
-			player.transform.position = newLocation.position;
+        if (collision.gameObject == player)
+            manager.LoadWin();
 	}
 }
