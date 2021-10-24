@@ -154,10 +154,11 @@ public class Player : MonoBehaviour
 		if (health > maxHealth)
 			health = maxHealth;
 		else if (health <= 0) {
-			health = maxHealth;
-			transform.position = spawnPoint.position;
-			rb.velocity = Vector2.zero;
+			// health = maxHealth;
+			// transform.position = spawnPoint.position;
+			// rb.velocity = Vector2.zero;
 			ActionAudioPlayer.PlaySound();
+			SceneChanger.LoadDed();
 		}
 	}
 }

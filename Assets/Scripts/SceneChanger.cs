@@ -6,26 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-   public void StartGame()
+	public static void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void LoadMenu()
+    public static void LoadMenu()
     {
         SceneManager.LoadScene("Menu");
     }
 
-    public void LoadWin()
+    public static void LoadWin()
     {
         SceneManager.LoadScene("Win Screen");
     }
 
-    public void LoadDed()
+    public static void LoadDed()
     {
         SceneManager.LoadScene("Ded Screen");
     }
-    public void quit()
+    public static void quit()
     {
         Debug.Log("quit");
         Application.Quit();

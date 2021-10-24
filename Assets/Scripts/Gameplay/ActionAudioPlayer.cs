@@ -8,9 +8,7 @@ public class ActionAudioPlayer : MonoBehaviour
     public static event Action died;
 
     public static void PlaySound() {
-        # region observer
         died?.Invoke();
-        # endregion
     }
 
 }
