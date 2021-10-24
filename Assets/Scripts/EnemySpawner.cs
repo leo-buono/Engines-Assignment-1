@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
 	public float timerMax = 10f;
 	public float counter = 0f;
 	public int maxCount = 5;
+	private List<GameObject> spawned = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +20,22 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (GameObject.FindObjectsOfType(typeof(EnemyAI)).Length >= maxCount)	return;
+		if (spawned.Count >= maxCount || EditorManager.GetPaused())	return;
 
 		counter -= Time.deltaTime;
         if (counter <= 0) {
         	counter = Random.Range(timerMin, timerMax);
-			Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+			spawned.Add(Instantiate(EnemyPrefab, transform.position, Quaternion.identity));
 		}
     }
+
+	void OnDestroy()
+	{
+		int index;
+		while(spawned.Count > 0) {
+			index = spawned.Count - 1;
+			Destroy(spawned[index]);
+			spawned.RemoveAt(index);
+		}
+	}
 }

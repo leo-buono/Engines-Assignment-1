@@ -45,11 +45,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (EditorManager.GetPaused()) {
+			return;
+		}
+
 		if (transform.position.y <= worldBottom) {
-			transform.position = spawnPoint.position;
-			rb.velocity = Vector2.zero;
-				ActionAudioPlayer.PlaySound();
-			health = maxHealth;
+			//kill player
+			ChangeHealth(-maxHealth);
+			return;
 		}
 		
 		if (stunTime > 0f) {
@@ -119,12 +122,7 @@ public class Player : MonoBehaviour
 	{
 		if (stunTime == 0f && collision.gameObject.layer == 8) {
 			stunTime = 0.5f;
-			if (--health <= 0) {
-				transform.position = spawnPoint.position;
-				rb.velocity = Vector2.zero;
-				health = maxHealth;
-				ActionAudioPlayer.PlaySound();
-			}
+			ChangeHealth(-1f);
 		}
 	}
 
@@ -149,5 +147,17 @@ public class Player : MonoBehaviour
 		onWall = false;
 
 		grounded = false;
+	}
+
+	void ChangeHealth(float change) {
+		health += change;
+		if (health > maxHealth)
+			health = maxHealth;
+		else if (health <= 0) {
+			health = maxHealth;
+			transform.position = spawnPoint.position;
+			rb.velocity = Vector2.zero;
+			ActionAudioPlayer.PlaySound();
+		}
 	}
 }
