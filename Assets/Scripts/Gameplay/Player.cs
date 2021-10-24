@@ -158,7 +158,6 @@ public class Player : MonoBehaviour
 			// health = maxHealth;
 			// transform.position = spawnPoint.position;
 			// rb.velocity = Vector2.zero;
-			ActionAudioPlayer.instance.Die();
 			SceneChanger.LoadDed();
 		}
 		else if (change < 0) {
