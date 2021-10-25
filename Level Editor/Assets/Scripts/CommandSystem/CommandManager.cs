@@ -22,13 +22,26 @@ public class CommandManager : MonoBehaviour
 
 	public void QueueFunction(FunctionData function) {
 		if (historyPos < history.Count) {
-			history.RemoveRange(historyPos, history.Count - historyPos);
+			int index;
+			while (historyPos < history.Count) {
+				index = history.Count - 1;
+				history[index].Delete();
+				history.RemoveAt(index);
+			}
 		}
 		queue.Enqueue(function);
 	}
 
 	public void Clear() {
-		history.Clear();
+		historyPos = 0;
+		
+		int index;
+		while (historyPos < history.Count)
+		{
+			index = history.Count - 1;
+			history[index].Delete();
+			history.RemoveAt(index);
+		}
 		queue.Clear();
 	}
 

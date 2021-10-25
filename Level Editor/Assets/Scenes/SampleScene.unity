@@ -187,7 +187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &90159962
 GameObject:
@@ -291,7 +291,7 @@ RectTransform:
   - {fileID: 548788117}
   - {fileID: 857166268}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -543,7 +543,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!61 &165516612
 BoxCollider2D:
@@ -1056,7 +1056,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1170,7 +1170,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1499,7 +1499,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &524133525
 Transform:
@@ -1703,7 +1703,7 @@ Transform:
   - {fileID: 1145879328}
   - {fileID: 1095479828}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &627830667
 GameObject:
@@ -1756,7 +1756,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!108 &644198174
 Light:
@@ -2805,7 +2805,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1095479828
 Transform:
@@ -2939,7 +2939,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1145879328
 Transform:
@@ -3212,7 +3212,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3353,7 +3353,7 @@ RectTransform:
   m_Children:
   - {fileID: 1265908745}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3548,7 +3548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 32.865005, y: 0.848999}
+  m_AnchoredPosition: {x: 25.099998, y: 0.848999}
   m_SizeDelta: {x: -28, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338786747
@@ -3584,7 +3584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Follow Player
+  m_Text: Ortho Camera
 --- !u!222 &1338786748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3767,7 +3767,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4542,7 +4542,7 @@ GameObject:
   - component: {fileID: 1829700420}
   - component: {fileID: 1829700421}
   m_Layer: 5
-  m_Name: Follow Player Toggle
+  m_Name: Ortho Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4567,7 +4567,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -152.18555, y: 55}
-  m_SizeDelta: {x: 262.72498, y: 47.300995}
+  m_SizeDelta: {x: 277.31, y: 47.300995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829700421
 MonoBehaviour:
@@ -4618,7 +4618,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1958404965}
         m_TargetAssemblyTypeName: EditorManager, Assembly-CSharp
-        m_MethodName: TogglePause
+        m_MethodName: OrthoToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4628,7 +4628,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1839761691
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,7 +4660,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1839761693
 MonoBehaviour:
@@ -4746,7 +4746,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1848496443
 Transform:
@@ -4965,7 +4965,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UItransform: {fileID: 1874217557}
   pixelHeight: 1080
-  manager: {fileID: 0}
+  manager: {fileID: 1958404965}
+  lowerBound: {x: -1, y: -1}
+  upperBound: {x: 1, y: 1}
+  prefab: {fileID: 0}
 --- !u!1 &1875567688
 GameObject:
   m_ObjectHideFlags: 0
@@ -5079,7 +5082,9 @@ MonoBehaviour:
   cameraDistance: 15
   speed: 5
   zoomSpeed: 5
+  orthoToggle: {fileID: 1829700421}
   speedController: {fileID: 857166269}
+  objName: {fileID: 1494906557}
   block: {fileID: 1820682784561355162, guid: b49f228a700a69d4cb73f4b736f08dcf, type: 3}
 --- !u!4 &1958404966
 Transform:
@@ -5230,7 +5235,7 @@ Transform:
   m_Children:
   - {fileID: 851869272}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1961168494
 Rigidbody2D:
@@ -5792,7 +5797,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!61 &2076412211
 BoxCollider2D:
@@ -5893,7 +5898,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5958,7 +5963,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!61 &2133804644
 BoxCollider2D:
@@ -6059,7 +6064,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.x

@@ -4,4 +4,6 @@ public interface FunctionData
     void Execute();
 
     void Undo();
+
+	void Delete();
 }
