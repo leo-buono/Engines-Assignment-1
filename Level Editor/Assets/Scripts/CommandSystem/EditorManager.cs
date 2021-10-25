@@ -40,6 +40,7 @@ public class EditorManager : MonoBehaviour
 	GameObject touch;
 	GameObject lastTouch;
 	Vector3 offset = Vector3.zero;
+	Vector3 oldPos = Vector3.zero;
 	bool dragging = false;
 
     // Update is called once per frame
@@ -62,9 +63,7 @@ public class EditorManager : MonoBehaviour
 		if (!objName.isFocused) 
 			CameraMove();
 
-		Vector3 pos = Input.mousePosition;
-		pos.z = cameraDistance;
-		pos = editorCamera.ScreenToWorldPoint(pos);
+		Vector3 pos = GetMousePos();
 
 		//check touch
 		if (dragging && touch! != null)
@@ -83,7 +82,8 @@ public class EditorManager : MonoBehaviour
 				if (touch == lastTouch) {
 					//drag
 					dragging = true;
-					offset = touch.transform.position - pos;
+					oldPos = touch.transform.position;
+					offset = oldPos - pos;
 				}
 			}
 			else {
@@ -94,6 +94,8 @@ public class EditorManager : MonoBehaviour
 
 		if (Input.GetKeyUp(KeyCode.Mouse0))
 		{
+			if (touch != null && dragging)
+				CommandManager.instance.QueueFunction(new MoveThing(touch, oldPos, touch.transform.position));
 			dragging = false;
 		}
     }
@@ -145,12 +147,17 @@ public class EditorManager : MonoBehaviour
 		editorCamera.orthographic = orthoToggle.isOn;
 	}
 
+	public Vector3 GetMousePos() {
+		Vector3 pos = Input.mousePosition;
+		pos.z = cameraDistance;
+		return editorCamera.ScreenToWorldPoint(pos);
+	}
+
 	public void SetMoveHandle(GameObject obj) {
 		touch = obj;
 		dragging = true;
 
-		Vector3 pos = Input.mousePosition;
-		pos.z = cameraDistance;
-		offset = touch.transform.position - editorCamera.ScreenToWorldPoint(pos);
+		oldPos = touch.transform.position;
+		offset = oldPos - GetMousePos();
 	}
 }

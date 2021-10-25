@@ -12,7 +12,7 @@ public class SpawnThing : FunctionData
 	Spawnable factory;
 	Vector3 position;
 
-	GameObject reference = null;
+	public GameObject reference = null;
 
     public void Execute()
     {
@@ -31,6 +31,7 @@ public class SpawnThing : FunctionData
     }
 
 	public void Delete() {
-		GameObject.Destroy(reference);
+		if (!reference.activeInHierarchy)
+			GameObject.Destroy(reference);
 	}
 }
