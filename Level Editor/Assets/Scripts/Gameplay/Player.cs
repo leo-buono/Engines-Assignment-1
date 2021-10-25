@@ -2,10 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+using System.Runtime.InteropServices;
+
 public class Player : MonoBehaviour
 {
+    //Dll
+    [DllImport("ModDLL")]
+    public static extern float getMaxHP();
+    [DllImport("ModDLL")]
+    public static extern float getSpeed();
+    [DllImport("ModDLL")]
+    public static extern float getDamage();
+
 	public GameObject prefab;
-	public float speed = 5f;
+	private float speed = 5f;
 	public float jumpStrength = 10f;
 
 	private Vector2 movement = Vector2.zero;
@@ -22,7 +33,7 @@ public class Player : MonoBehaviour
 	public Transform childTrans;
 
 	public float health = 25f;
-	public float maxHealth = 25f;
+	private float maxHealth = 25f;
 	public float worldBottom = 0;
 	private float stunTime = 0;
 	public Transform spawnPoint;
@@ -30,7 +41,11 @@ public class Player : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		rb = GetComponent<Rigidbody2D>();
+        //DLL mods
+        maxHealth = getMaxHP();
+        speed = getSpeed();
+
+        rb = GetComponent<Rigidbody2D>();
 
 		health = maxHealth;
 	}
@@ -115,7 +130,7 @@ public class Player : MonoBehaviour
 	{
 		if (stunTime == 0f && collision.gameObject.layer == 8) {
 			stunTime = 0.5f;
-			ChangeHealth(-1f);
+			ChangeHealth(-EnemyAI.getEnemyDamage());
 		}
 	}
 

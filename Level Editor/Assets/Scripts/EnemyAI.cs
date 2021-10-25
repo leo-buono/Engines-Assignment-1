@@ -2,9 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
+using System.Runtime.InteropServices;
+
 public class EnemyAI : MonoBehaviour
 {
-	public float speed = 5f;
+    //Dll
+    [DllImport("ModDLL")]
+    public static extern float getEnemyDamage();
+    [DllImport("ModDLL")]
+    public static extern float getEnemySpeed();
+    [DllImport("ModDLL")]
+    public static extern float getEnemyHP();
+
+    public float speed = 5f;
 	public float health = 5f;
 	public bool movingRight = true;
 	public bool stunned = false;
@@ -15,6 +26,10 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        //DLL
+        speed = getEnemySpeed();
+        health = getEnemyHP();
     }
 
     void FixedUpdate()
@@ -33,7 +48,7 @@ public class EnemyAI : MonoBehaviour
 	{
 		//if player trigger
 		if (collider.gameObject.layer == 6) {
-			--health;
+			health -= Player.getDamage();
 			if (health < 0) {
 				Destroy(gameObject);
 				ActionAudioPlayer.instance.Die();

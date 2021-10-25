@@ -1,8 +1,8 @@
 #define EXPORT_API __declspec(dllexport)
 
-/*  real dll
+//real dll
 #include <random>
-#include <time.h>//*/
+#include <time.h>
 
 // Link following functions C-style (required for plugins)
 extern "C"
@@ -12,36 +12,42 @@ extern "C"
 		float y;
 		float z;
 	};
+	
+	float EXPORT_API getMaxHP()
+	{
+		srand(time(0));
 
-	/*	real dll
-	Vector3 lowerBound = { 1.f, 1.f, 1.f };
-	Vector3 upperBound = { 2.f, 2.f, 2.f };//*/
-
-	//checks and also resets rand seed
-	void EXPORT_API SetScaleBounds(Vector3 lower, Vector3 upper) {
-		/*	real dll
-		if (lower.x > upper.x || lower.y > upper.y || lower.z > upper.z) {
-			return;
-		}
-		lowerBound = lower;
-		upperBound = {
-			upper.x - lower.x,
-			upper.y - lower.y,
-			upper.z - lower.z
-		};
-		srand(time(0));//*/
+		return 1 + rand() % 25;
 	}
 
-	//get a number
-	Vector3 EXPORT_API FetchRandomScale() {
-		/*	real dll
-		return {
-			lowerBound.x + (rand() % int(upperBound.x * 100.f)) * 0.001f,
-			lowerBound.y + (rand() % int(upperBound.y * 100.f)) * 0.001f,
-			lowerBound.z + (rand() % int(upperBound.z * 100.f)) * 0.001f,
-		};//*/
-
-		//  default/restore values
-		return { 1, 1, 1 };
+	float EXPORT_API getSpeed()
+	{
+		return 1 + rand() % 20;
 	}
+
+	float EXPORT_API getDamage()
+	{
+		return 1 + rand() % 20;
+	}
+
+	float EXPORT_API getHPup()
+	{
+		return 1 + rand() % 10;
+	}
+
+	float EXPORT_API getEnemyDamage()
+	{
+		return 1 + rand() % 25;
+	}
+
+	float EXPORT_API getEnemySpeed()
+	{
+		return 1 + rand() % 20;
+	}
+
+	float EXPORT_API getEnemyHP()
+	{
+		return 1 + rand() % 20;
+	}
+	
 }
