@@ -9,6 +9,7 @@ public class SceneChanger : MonoBehaviour
 	public static void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
+		CommandManager.instance.Clear();
     }
 
     public static void LoadMenu()

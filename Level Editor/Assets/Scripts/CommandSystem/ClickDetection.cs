@@ -8,7 +8,7 @@ public class ClickDetection : MonoBehaviour
 {
 	public RectTransform UItransform;
 	public int pixelHeight = 1080;
-	float camDistance = 15f;
+	public EditorManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +19,7 @@ public class ClickDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			Vector3 pos = Input.mousePosition;
-			pos.z = camDistance;
-			Collider2D touch = CollisionCheck(Camera.main.ScreenToWorldPoint(pos));
-			if (touch != null) {
-				Debug.Log(touch.name);
-			}
-		}
+		
     }
 
 	//relative to Canvas data
@@ -37,10 +30,5 @@ public class ClickDetection : MonoBehaviour
 		pos.y *= pixelHeight * 0.5f;
 		pos.x *= pixelHeight * 0.5f * Camera.main.aspect;
 		return pos;
-	}
-
-	Collider2D CollisionCheck(Vector2 input)
-	{
-		return Physics2D.OverlapPoint(input);
 	}
 }

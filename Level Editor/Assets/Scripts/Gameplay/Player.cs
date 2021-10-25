@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
 	public float deccelSpeed = 5f;
 
 	private Rigidbody2D rb;
-	private BoxCollider2D attackBox;
-	private Transform childTrans;
+	public BoxCollider2D attackBox;
+	public Transform childTrans;
 
 	public float health = 25f;
 	public float maxHealth = 25f;
@@ -30,16 +30,8 @@ public class Player : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		childTrans = GetComponentsInChildren<Transform>()[1];
 		rb = GetComponent<Rigidbody2D>();
-		//get the trigger box
-		BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
-		for (int i = 0; i < colliders.Length; ++i) {
-			if (colliders[i].isTrigger) {
-				attackBox = colliders[i];
-				break;
-			}
-		}
+
 		health = maxHealth;
 	}
 
@@ -80,7 +72,7 @@ public class Player : MonoBehaviour
 			if (wallOnRight)	movement.x = Mathf.Min(movement.x, 0f);
 			else				movement.x = Mathf.Max(movement.x, 0f);
 
-			if (Input.GetKeyDown(KeyCode.Space) && !grounded) {
+			if (Input.GetButtonDown("Jump") && !grounded) {
 				//diagonal jump
 				movement.y = jumpStrength;
 				if (wallOnRight)	movement.x = -speed;
@@ -93,20 +85,20 @@ public class Player : MonoBehaviour
 		}
 
 		if (grounded) {
-			if (Input.GetKeyDown(KeyCode.Space)) {
+			if (Input.GetButtonDown("Jump")) {
 				movement.y = jumpStrength;
 				grounded = false;
 			}
 
 		}
 		//attack
-		if (Input.GetKeyDown(KeyCode.E)) {
+		if (Input.GetButtonDown("Attack")) {
 			attackBox.offset = Vector2.right * hori + Vector2.up * verti;
 			childTrans.localPosition = Vector3.right * hori + Vector3.up * verti;
 			childTrans.localScale = Vector3.one * 1.5f + Vector3.back * 0.7f;
 			attackBox.enabled = true;
 		}
-		if (Input.GetKeyUp(KeyCode.E)) {
+		if (Input.GetButtonUp("Attack")) {
 			attackBox.enabled = false;
 			childTrans.localPosition = Vector3.zero;
 			childTrans.localScale = Vector3.one * 0.9f + Vector3.back * 0.4f;

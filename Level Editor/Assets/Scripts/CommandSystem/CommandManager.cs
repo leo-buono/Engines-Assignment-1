@@ -5,17 +5,29 @@ using UnityEngine;
 public class CommandManager : MonoBehaviour
 {
 	//undo system based on tutorial code
-	static List<FunctionData> history = new List<FunctionData>();
-	static Queue<FunctionData> queue = new Queue<FunctionData>();
+	List<FunctionData> history = new List<FunctionData>();
+	Queue<FunctionData> queue = new Queue<FunctionData>();
 	
-	static void QueueFunction(FunctionData function) {
+	public static CommandManager instance { get; private set; }
+
+	void Awake() {
+		if (instance == null) {
+			instance = this;
+			DontDestroyOnLoad(this);
+		}
+		else {
+			Destroy(gameObject);
+		}
+	}
+
+	public void QueueFunction(FunctionData function) {
 		if (historyPos < history.Count) {
 			history.RemoveRange(historyPos, history.Count - historyPos);
 		}
 		queue.Enqueue(function);
 	}
 
-	static void Clear() {
+	public void Clear() {
 		history.Clear();
 		queue.Clear();
 	}
@@ -23,21 +35,13 @@ public class CommandManager : MonoBehaviour
 	FunctionData tempFunc;
 	static int historyPos = 0;
 
-	public GameObject blah;
-	PrefabFactory blockMaker = new PrefabFactory();
-
 	void Start()
 	{
 		historyPos = history.Count;
-		blockMaker.prefab = blah;
 	}
 
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.G)) {
-			QueueFunction(new SpawnThing(blockMaker, new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f))));
-		}
-
         while (queue.Count > 0) {
 			tempFunc = queue.Dequeue();
 			tempFunc.Execute();
