@@ -32,6 +32,7 @@ public class ClickDetection : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
 			if (AABBTest(ConvertedMousePos())) {
 				SpawnThing spawn = new SpawnThing(factory, manager.GetMousePos());
+				spawn.Execute();
 				manager.SetMoveHandle(spawn.reference);
 				CommandManager.instance.QueueFunction(spawn);
 			}
@@ -49,9 +50,6 @@ public class ClickDetection : MonoBehaviour
 	}
 
 	bool AABBTest(Vector2 input) {
-		Debug.Log("input" + input);
-		Debug.Log("lwoer" + lowerBound);
-		Debug.Log("upper" + upperBound);
 		return (
 			lowerBound.x < input.x && input.x < upperBound.x &&
 			lowerBound.y < input.y && input.y < upperBound.y
