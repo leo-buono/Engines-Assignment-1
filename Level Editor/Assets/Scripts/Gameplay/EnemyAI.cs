@@ -15,8 +15,8 @@ public class EnemyAI : MonoBehaviour
     [DllImport("ModDLL")]
     public static extern float getEnemyHP();
 
-    public float speed = 5f;
-	public float health = 5f;
+    private float speed = 5f;
+	private float health = 5f;
 	public bool movingRight = true;
 	public bool stunned = false;
 
