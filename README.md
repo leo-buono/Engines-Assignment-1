@@ -26,6 +26,8 @@ UML:
 
 Mozilla Hub Room: https://hub.link/yapbHYN
 
+In the hub, you can see models of our level on either side of the room. In the centre is a large screen displaying our youtube video. Please enjoy.
+
 Main Controls:  
 WASD or Arrows to move  
 Space to jump  
