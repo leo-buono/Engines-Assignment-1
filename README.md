@@ -8,8 +8,9 @@ This game is a 2.5D platforming game. The player can move jump, attack and wall 
 Team Members:  
 Jonathan Jay (100743575) && Matthew McPherson (100757379)
 
+Video Link: https://youtu.be/PdQ6ieh0I0s  
 Mozilla Hub Room: https://hub.link/yapbHYN  
-Video Link: https://youtu.be/PdQ6ieh0I0s
+In the hub, you can see models of our level on either side of the room. In the centre is a large screen displaying our youtube video. Please enjoy.
 
 Screenshots and UML:
 
@@ -21,6 +22,7 @@ UI after some changes
 
 Changes in game  
 ![In Game](docs/GameView.png)
+
 
 UML:  
 ![UML](docs/UML.png)
