@@ -43,7 +43,7 @@ Rename objects by clicking in the name box in the top right
 Undo with Z, redo with R
 
 
-
+To mod the game, grab the dll wanted from teh DLLs folder and paste it into the plugins folder of Unity, then rename it ModDLL.dll
 
 
 The code was written by us and assisted by Tutorial code for Observer, Command and Singleton design patterns  
