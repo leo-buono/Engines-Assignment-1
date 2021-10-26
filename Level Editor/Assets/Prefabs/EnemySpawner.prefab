@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6961292621504278779}
   - component: {fileID: 6961292621504278777}
   - component: {fileID: 6961292621504278776}
+  - component: {fileID: 956205123868913129}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -100,3 +101,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!58 &956205123868913129
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961292621504278781}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

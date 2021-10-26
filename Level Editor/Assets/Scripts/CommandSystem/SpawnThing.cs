@@ -31,7 +31,8 @@ public class SpawnThing : FunctionData
     }
 
 	public void Delete() {
-		if (!reference.activeInHierarchy)
-			GameObject.Destroy(reference);
+		if (reference != null)
+			if (!reference.activeInHierarchy)
+				GameObject.Destroy(reference);
 	}
 }

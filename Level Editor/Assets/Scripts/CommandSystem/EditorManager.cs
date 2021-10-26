@@ -12,8 +12,10 @@ public class EditorManager : MonoBehaviour
 	public float speed = 5f;
 	public float zoomSpeed = 5f;
 	public Toggle orthoToggle;
-	public Slider speedController;	
-
+	public Slider speedController;
+	public Slider xScale;
+	public Slider yScale;
+	public Slider zScale;
 	public InputField objName;
 
 	static bool paused = false;
@@ -28,74 +30,100 @@ public class EditorManager : MonoBehaviour
 		pos.z = -cameraDistance;
 		editorCamera.transform.position = pos;
 		speedController.value = speed;
-
-
-
-		blockMaker.prefab = block;
     }
-
-	public GameObject block;
-	PrefabFactory blockMaker = new PrefabFactory();
 
 	GameObject touch;
 	GameObject lastTouch;
 	Vector3 offset = Vector3.zero;
-	Vector3 oldPos = Vector3.zero;
+	Vector3 oldVec = Vector3.zero;
 	bool dragging = false;
-
+	bool scaling = false;
+	bool typing = false;
+	
     // Update is called once per frame
     void Update()
-    {
+	{
+		//dont anything while typing
+		if (typing)		return;
+
+		//toggle pause
 		if (Input.GetKeyDown(KeyCode.P)) {
 			TogglePause();
 			return;
 		}
 
-		if (Input.GetKeyDown(KeyCode.G))
-		{
-			CommandManager.instance.QueueFunction(new SpawnThing(blockMaker, new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f))));
-		}
-
 		//dont do stuff if not paused
 		if (!paused)	return;
 
-		//dont allow movement while typing
-		if (!objName.isFocused) 
-			CameraMove();
+		CameraMove();
 
 		Vector3 pos = GetMousePos();
 
-		//check touch
-		if (dragging && touch! != null)
-		{
-			touch.transform.position = pos + offset;
+		if (Input.GetKeyDown(KeyCode.Delete)) {
+			if (touch != null)
+				if (touch.layer != 6)
+					CommandManager.instance.QueueFunction(new DeleteThing(touch));
+			scaling = false;
+			dragging = false;
+			touch = null;
 		}
-		else if (Input.GetKeyDown(KeyCode.Mouse0))
-		{
-			lastTouch = touch;
-			Collider2D temp = Physics2D.OverlapPoint(pos);
-			if (temp != null)
-			{
-				touch = temp.gameObject;
-				objName.text = touch.name;
 
-				if (touch == lastTouch) {
-					//drag
-					dragging = true;
-					oldPos = touch.transform.position;
-					offset = oldPos - pos;
-				}
-			}
-			else {
+		if (scaling) {
+			touch.transform.localScale =
+				Vector3.right * xScale.value +
+				Vector3.up * yScale.value +
+				Vector3.forward * zScale.value;
+
+			if (Input.GetKeyDown(KeyCode.Mouse1)) {
+				scaling = false;
+				CommandManager.instance.QueueFunction(new ScaleThing(touch, oldVec, touch.transform.localScale));
+				dragging = true;
 				objName.text = "";
+				dragging = false;
 				touch = null;
+			}
+		}
+		else {
+			//check touch
+			if (dragging && touch! != null)
+			{
+				touch.transform.position = pos + offset;
+			}
+			else if (Input.GetKeyDown(KeyCode.Mouse0))
+			{
+				lastTouch = touch;
+				Collider2D temp = Physics2D.OverlapPoint(pos);
+				if (temp != null)
+				{
+					touch = temp.gameObject;
+					xScale.value = touch.transform.localScale.x;
+					yScale.value = touch.transform.localScale.y;
+					zScale.value = touch.transform.localScale.z;
+
+					dragging = true;
+					objName.text = touch.name;
+					dragging = false;
+
+					if (touch == lastTouch) {
+						//drag
+						dragging = true;
+						oldVec = touch.transform.position;
+						offset = oldVec - pos;
+					}
+				}
+				else {
+					dragging = true;
+					objName.text = "";
+					dragging = false;
+					touch = null;
+				}
 			}
 		}
 
 		if (Input.GetKeyUp(KeyCode.Mouse0))
 		{
 			if (touch != null && dragging)
-				CommandManager.instance.QueueFunction(new MoveThing(touch, oldPos, touch.transform.position));
+				CommandManager.instance.QueueFunction(new MoveThing(touch, oldVec, touch.transform.position));
 			dragging = false;
 		}
     }
@@ -138,6 +166,29 @@ public class EditorManager : MonoBehaviour
 		UpdateCamera();
 	}
 
+	public void SetName() {
+		typing = false;
+		if (lastTouch != null) {
+			lastTouch.name = objName.text;
+		}
+	}
+	public void StartTyping() {
+		if (!dragging) {
+			typing = true;
+		}
+	}
+
+	public void StartScaling() {
+		if (touch != null) {
+			scaling = true;
+			oldVec = touch.transform.localScale;
+		}
+	}
+
+	public void ClearHistory() {
+		CommandManager.instance.Clear();
+	}
+
 	public void UpdateCamera() {
 		gameCamera.enabled = !paused;
 		editorCamera.enabled = paused;
@@ -155,9 +206,13 @@ public class EditorManager : MonoBehaviour
 
 	public void SetMoveHandle(GameObject obj) {
 		touch = obj;
+		xScale.value = touch.transform.localScale.x;
+		yScale.value = touch.transform.localScale.y;
+		zScale.value = touch.transform.localScale.z;
 		dragging = true;
+		objName.text = touch.name;
 
-		oldPos = touch.transform.position;
-		offset = oldPos - GetMousePos();
+		oldVec = touch.transform.position;
+		offset = oldVec - GetMousePos();
 	}
 }

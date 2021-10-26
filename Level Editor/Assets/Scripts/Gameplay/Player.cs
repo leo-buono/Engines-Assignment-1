@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
 	public float health = 25f;
 	private float maxHealth = 25f;
-	public float worldBottom = 0;
+	public Transform worldBottom;
 	private float stunTime = 0;
 	public Transform spawnPoint;
 
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
 			return;
 		}
 
-		if (transform.position.y <= worldBottom) {
+		if (transform.position.y <= worldBottom.position.y) {
 			//kill player
 			ChangeHealth(-maxHealth);
 			return;
