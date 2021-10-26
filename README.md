@@ -8,6 +8,7 @@ This game is a 2.5D platforming game. The player can move jump, attack and wall 
 Team Members:  
 Jonathan Jay (100743575) && Matthew McPherson (100757379)
 
+Mozilla Hub Room: https://hub.link/yapbHYN  
 Video Link: https://youtu.be/PdQ6ieh0I0s
 
 Screenshots and UML:
@@ -23,8 +24,6 @@ Changes in game
 
 UML:  
 ![UML](docs/UML.png)
-
-Mozilla Hub Room: https://hub.link/yapbHYN
 
 Main Controls:  
 WASD or Arrows to move  
