@@ -38,7 +38,7 @@ Editor Controls:
 Left Click to select  
 Drag on selected to move  
 Drag scale sliders to scale object  
-  -Right Click to confirm scale  
+----Right Click to confirm scale  
 Delete to delete selected object  
 Rename objects by clicking in the name box in the top right  
 Undo with Z, redo with R
@@ -46,10 +46,10 @@ Undo with Z, redo with R
 
 To mod the game, grab the dll wanted from teh DLLs folder and paste it into the plugins folder of Unity, then rename it ModDLL.dll
 
-We had a whopping 4 Design patterns implemented:
-Singleton in the event and command managers
-Observer using C# events
-Command using the FunctionData interface as base
+We had a whopping 4 Design patterns implemented:  
+Singleton in the event and command managers  
+Observer using C# events  
+Command using the FunctionData interface as base  
 Factory using the Spawnable interface as base
 
 
