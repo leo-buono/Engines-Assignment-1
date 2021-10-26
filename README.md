@@ -8,7 +8,7 @@ This game is a 2.5D platforming game. The player can move jump, attack and wall 
 Team Members:  
 Jonathan Jay (100743575) && Matthew McPherson (100757379)
 
-Video Link:
+Video Link: https://youtu.be/PdQ6ieh0I0s
 
 Screenshots and UML:
 
@@ -44,6 +44,12 @@ Undo with Z, redo with R
 
 
 To mod the game, grab the dll wanted from teh DLLs folder and paste it into the plugins folder of Unity, then rename it ModDLL.dll
+
+We had a whopping 4 Design patterns implemented:
+Singleton in the event and command managers
+Observer using C# events
+Command using the FunctionData interface as base
+Factory using the Spawnable interface as base
 
 
 The code was written by us and assisted by Tutorial code for Observer, Command and Singleton design patterns  
