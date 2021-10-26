@@ -85,7 +85,7 @@ public class EditorManager : MonoBehaviour
 		}
 		else {
 			//check touch
-			if (dragging && touch! != null)
+			if (dragging && touch != null)
 			{
 				touch.transform.position = pos + offset;
 			}
