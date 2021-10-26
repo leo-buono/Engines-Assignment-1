@@ -185,6 +185,10 @@ public class EditorManager : MonoBehaviour
 		}
 	}
 
+	public void ClearHistory() {
+		CommandManager.instance.Clear();
+	}
+
 	public void UpdateCamera() {
 		gameCamera.enabled = !paused;
 		editorCamera.enabled = paused;
