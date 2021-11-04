@@ -11,7 +11,7 @@ public class Explosive : MonoBehaviour
 	private float counter = 0;
 
 	void Update() {
-		if (counter > 0) {
+		if (counter > 0 && !EditorManager.GetPaused()) {
 			counter -= Time.deltaTime;
 			if (counter <= 0) {
 				gameObject.SetActive(false);

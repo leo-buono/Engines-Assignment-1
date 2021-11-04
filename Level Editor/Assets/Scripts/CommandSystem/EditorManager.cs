@@ -17,6 +17,8 @@ public class EditorManager : MonoBehaviour
 	public Slider yScale;
 	public Slider zScale;
 	public InputField objName;
+	public Image deletePrompt;
+	public Image scalingPrompt;
 
 	static bool paused = false;
 
@@ -30,6 +32,7 @@ public class EditorManager : MonoBehaviour
 		pos.z = -cameraDistance;
 		editorCamera.transform.position = pos;
 		speedController.value = speed;
+		deletePrompt.gameObject.SetActive(false);
     }
 
 	GameObject touch;
@@ -60,12 +63,19 @@ public class EditorManager : MonoBehaviour
 		Vector3 pos = GetMousePos();
 
 		if (Input.GetKeyDown(KeyCode.Delete)) {
-			if (touch != null)
-				if (touch.layer != 6)
+			if (touch != null) {
+				//don't delete unless prompt says so
+				if (deletePrompt.gameObject.activeInHierarchy)
 					CommandManager.instance.QueueFunction(new DeleteThing(touch));
+			}
+			if (scaling)
+				scalingPrompt.color = Color.white;
 			scaling = false;
+			dragging = true;
+			objName.text = "";
 			dragging = false;
 			touch = null;
+			deletePrompt.gameObject.SetActive(false);
 		}
 
 		if (scaling) {
@@ -75,12 +85,14 @@ public class EditorManager : MonoBehaviour
 				Vector3.forward * zScale.value;
 
 			if (Input.GetKeyDown(KeyCode.Mouse1)) {
+				scalingPrompt.color = Color.white;
 				scaling = false;
 				CommandManager.instance.QueueFunction(new ScaleThing(touch, oldVec, touch.transform.localScale));
-				dragging = true;
-				objName.text = "";
-				dragging = false;
-				touch = null;
+				//dragging = true;
+				//objName.text = "";
+				//dragging = false;
+				//touch = null;
+				//deletePrompt.gameObject.SetActive(false);
 			}
 		}
 		else {
@@ -104,6 +116,9 @@ public class EditorManager : MonoBehaviour
 					objName.text = touch.name;
 					dragging = false;
 
+					//don't show prompt if player or bomb
+					deletePrompt.gameObject.SetActive(touch.layer != 6 && touch.layer != 9);
+
 					if (touch == lastTouch) {
 						//drag
 						dragging = true;
@@ -116,6 +131,7 @@ public class EditorManager : MonoBehaviour
 					objName.text = "";
 					dragging = false;
 					touch = null;
+					deletePrompt.gameObject.SetActive(false);
 				}
 			}
 		}
@@ -180,8 +196,12 @@ public class EditorManager : MonoBehaviour
 
 	public void StartScaling() {
 		if (touch != null) {
-			scaling = true;
-			oldVec = touch.transform.localScale;
+			//dirty flag
+			if (!scaling) {
+				scalingPrompt.color = Color.grey + Color.green;
+				scaling = true;
+				oldVec = touch.transform.localScale;
+			}
 		}
 	}
 
@@ -205,12 +225,23 @@ public class EditorManager : MonoBehaviour
 	}
 
 	public void SetMoveHandle(GameObject obj) {
+		//make sure to not scale no more
+		if (scaling) {
+			scalingPrompt.color = Color.white;
+			scaling = false;
+			CommandManager.instance.QueueFunction(new ScaleThing(touch, oldVec, touch.transform.localScale));
+		}
+
+		lastTouch = touch;
 		touch = obj;
 		xScale.value = touch.transform.localScale.x;
 		yScale.value = touch.transform.localScale.y;
 		zScale.value = touch.transform.localScale.z;
+
 		dragging = true;
 		objName.text = touch.name;
+
+		deletePrompt.gameObject.SetActive(true);
 
 		oldVec = touch.transform.position;
 		offset = oldVec - GetMousePos();
