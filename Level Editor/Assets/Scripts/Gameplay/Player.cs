@@ -37,6 +37,13 @@ public class Player : MonoBehaviour
 	public Transform worldBottom;
 	private float stunTime = 0;
 	public Transform spawnPoint;
+	
+	public GameObject bombPrefab;
+	public int bombCount = 5;
+	private Queue<GameObject> bombPool = new Queue<GameObject>();
+
+	GameObject temp;
+	Vector2 tempVec;
 
 	// Start is called before the first frame update
 	void Start()
@@ -48,6 +55,17 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
 		health = maxHealth;
+
+		//initialize explosives
+		if (bombCount <= 0)
+			bombCount = 1;
+		for (int i = 0; i < bombCount; ++i) {
+			temp = Instantiate(bombPrefab);
+			temp.SetActive(false);
+			bombPool.Enqueue(temp);
+		}
+
+		temp = null;
 	}
 
     // Update is called once per frame
@@ -118,6 +136,15 @@ public class Player : MonoBehaviour
 			childTrans.localPosition = Vector3.zero;
 			childTrans.localScale = Vector3.one * 0.9f + Vector3.back * 0.4f;
 		}
+		if (Input.GetButtonDown("Bomb")) {
+			tempVec = Vector2.right * hori + Vector2.up * verti;
+			temp = bombPool.Dequeue();
+			temp.GetComponent<Explosive>().Init(
+				(tempVec * (Vector2.right * speed + Vector2.up * 3f)) + Vector2.up * 10f,
+				transform.position + (Vector3)tempVec
+			);
+			bombPool.Enqueue(temp);
+		}
 
 		//update camera stuff
 		SmoothFollow.advancedFocus = Mathf.Abs(movement.x) > 1f;
@@ -138,14 +165,14 @@ public class Player : MonoBehaviour
 	{
 		int count = collision.contactCount;
 		for (int i = 0; i < count; ++i) {
-			Vector2 normal = collision.GetContact(i).normal;
+			tempVec = collision.GetContact(i).normal;
 
 			//grounded check if not already grounded
-			if (!grounded)	grounded = normal.y > 0.5f;
+			if (!grounded)	grounded = tempVec.y > 0.5f;
 
 			//wall check for wall slide only if in air and not on wall
-			if (!onWall)	onWall = Mathf.Abs(normal.x) > 0.9f;
-			wallOnRight = normal.x < 0f;
+			if (!onWall)	onWall = Mathf.Abs(tempVec.x) > 0.9f;
+			wallOnRight = tempVec.x < 0f;
 		}
 	}
 

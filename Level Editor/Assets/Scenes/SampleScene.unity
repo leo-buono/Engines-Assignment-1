@@ -5193,6 +5193,8 @@ MonoBehaviour:
   health: 25
   worldBottom: {fileID: 1212000855}
   spawnPoint: {fileID: 88561639}
+  bombPrefab: {fileID: 3102874565979569100, guid: cb6cfbb2c0053f042b293432f50381a8, type: 3}
+  bombCount: 5
 --- !u!61 &1961168490
 BoxCollider2D:
   m_ObjectHideFlags: 0

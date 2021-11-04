@@ -58,6 +58,27 @@ public class EnemyAI : MonoBehaviour
 			//knockback
 			rb.velocity = collider.offset * 5f + Vector2.up * 2.5f;
 		}
+		//if explosive
+		else if (collider.gameObject.layer == 9) {
+			health -= Player.getDamage();
+			if (health < 0) {
+				Destroy(gameObject);
+				ActionAudioPlayer.instance.Die();
+				return;
+			}
+			stunned = true;
+			//knockback
+			rb.velocity = ((Vector2)(
+				transform.position - collider.gameObject.transform.position
+			)).normalized * 7.5f;
+
+			//force bounce
+			if (rb.velocity.y <= 5f) {
+				Vector2 temp = rb.velocity;
+				temp.y = 5f;
+				rb.velocity = temp;
+			}
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
