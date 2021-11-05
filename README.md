@@ -22,7 +22,7 @@ Normal UI
 UI after some changes  
 ![Stuff done](docs/Editor2.png)
 
-Changes in game  
+Normal View  
 ![In Game](docs/GameView.png)
 
 
