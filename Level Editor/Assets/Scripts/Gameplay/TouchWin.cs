@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class TouchWin : MonoBehaviour
 {
-	public GameObject player;
+	GameObject player;
+
+	void Start() {
+		player = GameObject.Find("Player");
+	}
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{

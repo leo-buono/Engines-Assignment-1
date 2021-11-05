@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HPText : MonoBehaviour
 {
-    public Text HP;
+    Text HP;
     Player hpref;
 
     // Start is called before the first frame update

@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
 	private float health = 5f;
 	public bool movingRight = true;
 	public bool stunned = false;
+	public EnemySpawner spawner;
 
 	private Rigidbody2D rb;
 
@@ -90,5 +91,24 @@ public class EnemyAI : MonoBehaviour
 			movingRight = normal.x > 0.5f;
 
 		stunned = false;
+	}
+
+	void OnEnable() {
+		if (spawner != null) {
+			spawner.AddEnemy(gameObject);
+		}
+	}
+
+	void OnDisable() {
+		if (spawner != null) {
+			spawner.RemoveEnemy(gameObject);
+		}
+	}
+
+	void OnDestroy() {
+		//remove self from spawner
+		if (spawner != null) {
+			spawner.RemoveEnemy(gameObject);
+		}
 	}
 }

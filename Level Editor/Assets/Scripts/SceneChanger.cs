@@ -6,11 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+	static public bool mainGame = true;
 	public static void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+		mainGame = true;
+        SceneManager.LoadScene("Main Level");
 		CommandManager.instance.Clear();
     }
+
+	public static void StartTutorial()
+    {
+		mainGame = false;
+        SceneManager.LoadScene("Tutorial");
+		CommandManager.instance.Clear();
+    }
+
+	public static void Retry()
+	{
+		if (mainGame)
+			StartGame();
+		else
+			StartTutorial();
+	}
 
     public static void LoadMenu()
     {
@@ -26,6 +43,7 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("Ded Screen");
     }
+	
     public static void quit()
     {
         Debug.Log("quit");

@@ -8,6 +8,8 @@ public class EditorManager : MonoBehaviour
 {
 	public Camera gameCamera;
 	public Camera editorCamera;
+	public Transform selectedOverlay;
+	public Vector3 selectionBoost = Vector3.one * 0.15f;
 	public float cameraDistance = 15f;
 	public float speed = 5f;
 	public float zoomSpeed = 5f;
@@ -33,6 +35,7 @@ public class EditorManager : MonoBehaviour
 		editorCamera.transform.position = pos;
 		speedController.value = speed;
 		deletePrompt.gameObject.SetActive(false);
+		selectedOverlay.gameObject.SetActive(false);
     }
 
 	GameObject touch;
@@ -52,6 +55,7 @@ public class EditorManager : MonoBehaviour
 		//toggle pause
 		if (Input.GetKeyDown(KeyCode.P)) {
 			TogglePause();
+			selectedOverlay.gameObject.SetActive(paused && touch != null);
 			return;
 		}
 
@@ -118,6 +122,7 @@ public class EditorManager : MonoBehaviour
 
 					//don't show prompt if player or bomb
 					deletePrompt.gameObject.SetActive(touch.layer != 6 && touch.layer != 9);
+					selectedOverlay.gameObject.SetActive(true);
 
 					if (touch == lastTouch) {
 						//drag
@@ -141,6 +146,15 @@ public class EditorManager : MonoBehaviour
 			if (touch != null && dragging)
 				CommandManager.instance.QueueFunction(new MoveThing(touch, oldVec, touch.transform.position));
 			dragging = false;
+		}
+
+		//updated the selected
+		if (touch != null) {
+			selectedOverlay.position = touch.transform.position;
+			selectedOverlay.localScale = touch.transform.localScale + selectionBoost;
+		}
+		else if (selectedOverlay.gameObject.activeInHierarchy) {
+			selectedOverlay.gameObject.SetActive(false);
 		}
     }
 
@@ -242,6 +256,7 @@ public class EditorManager : MonoBehaviour
 		objName.text = touch.name;
 
 		deletePrompt.gameObject.SetActive(true);
+		selectedOverlay.gameObject.SetActive(true);
 
 		oldVec = touch.transform.position;
 		offset = oldVec - GetMousePos();
