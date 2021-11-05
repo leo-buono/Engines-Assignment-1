@@ -20,6 +20,7 @@ public class EnemyAI : MonoBehaviour
 	public bool movingRight = true;
 	public bool stunned = false;
 	public EnemySpawner spawner;
+	public static float bottom = -100f;
 
 	private Rigidbody2D rb;
 
@@ -35,6 +36,10 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+		if (transform.position.y < bottom) {
+			Destroy(gameObject);
+			return;
+		}
 		if (!stunned) {
 			//jsut direction
 			Vector2 movement = rb.velocity;
