@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour
 {
-	public BoxCollider2D explosion;
+	public Collider2D explosion;
 	public Rigidbody2D bod;
 	public float delay = 0.25f;
 	private bool activated = false;
@@ -24,7 +24,9 @@ public class Explosive : MonoBehaviour
 		explosion.gameObject.SetActive(false);
 		activated = false;
 		transform.position = position;
+		transform.rotation = Quaternion.identity;
 		bod.velocity = velo;
+		bod.AddTorque(velo.x * -0.5f);
 	}
 
 	public void OnCollisionEnter2D(Collision2D collider) {

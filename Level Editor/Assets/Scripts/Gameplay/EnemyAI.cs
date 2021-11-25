@@ -16,7 +16,8 @@ public class EnemyAI : MonoBehaviour
     public static extern float getEnemyHP();
 
     private float speed = 5f;
-	private float health = 5f;
+	public float health = 5f;
+	public float maxHealth = 5f;
 	public bool movingRight = true;
 	public bool stunned = false;
 	public EnemySpawner spawner;
@@ -31,7 +32,8 @@ public class EnemyAI : MonoBehaviour
 
         //DLL
         speed = getEnemySpeed();
-        health = getEnemyHP();
+        maxHealth = getEnemyHP();
+		health = maxHealth;
     }
 
     void FixedUpdate()
@@ -57,7 +59,7 @@ public class EnemyAI : MonoBehaviour
 			health -= Player.getDamage();
 			if (health < 0) {
 				Destroy(gameObject);
-				ActionAudioPlayer.instance.Die();
+				ActionEventPlayer.instance.Die();
 				return;
 			}
 			stunned = true;
@@ -69,7 +71,7 @@ public class EnemyAI : MonoBehaviour
 			health -= Player.getDamage();
 			if (health < 0) {
 				Destroy(gameObject);
-				ActionAudioPlayer.instance.Die();
+				ActionEventPlayer.instance.Die();
 				return;
 			}
 			stunned = true;

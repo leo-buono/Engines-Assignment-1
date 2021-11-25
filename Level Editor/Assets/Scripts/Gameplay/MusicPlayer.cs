@@ -14,13 +14,13 @@ public class MusicPlayer : MonoBehaviour
 
 	private void OnEnable()
 	{
-		ActionAudioPlayer.instance.music += PlayAudio;
-		ActionAudioPlayer.instance.Music();
+		ActionEventPlayer.instance.music += PlayAudio;
+		ActionEventPlayer.instance.Music();
 	}
 
 	private void OnDisable()
 	{
-		ActionAudioPlayer.instance.music -= PlayAudio;
+		ActionEventPlayer.instance.music -= PlayAudio;
 	}
 
 	private void PlayAudio()

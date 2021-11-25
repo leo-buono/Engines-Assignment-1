@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ActionAudioPlayer : MonoBehaviour
+public class ActionEventPlayer : MonoBehaviour
 {
-	public static ActionAudioPlayer instance { get; private set; }
+	public static ActionEventPlayer instance { get; private set; }
 
     public event Action died;
     public event Action damaged;

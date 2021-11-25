@@ -151,7 +151,8 @@ public class EditorManager : MonoBehaviour
 		//updated the selected
 		if (touch != null) {
 			selectedOverlay.position = touch.transform.position;
-			selectedOverlay.localScale = touch.transform.localScale + selectionBoost;
+			selectedOverlay.localScale = touch.transform.lossyScale + selectionBoost;
+			selectedOverlay.rotation = touch.transform.rotation;
 		}
 		else if (selectedOverlay.gameObject.activeInHierarchy) {
 			selectedOverlay.gameObject.SetActive(false);

@@ -29,11 +29,11 @@ public class Player : MonoBehaviour
 	public float deccelSpeed = 5f;
 
 	private Rigidbody2D rb;
-	public BoxCollider2D attackBox;
+	public Collider2D attackBox;
 	public Transform childTrans;
 
 	public float health = 25f;
-	private float maxHealth = 25f;
+	public float maxHealth { get; private set; }
 	public Transform worldBottom;
 	private float stunTime = 0;
 	public Transform spawnPoint;
@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
 			SceneChanger.LoadDed();
 		}
 		else if (change < 0) {
-			ActionAudioPlayer.instance.Damaged();
+			ActionEventPlayer.instance.Damaged();
 		}
 	}
 
@@ -205,10 +205,10 @@ public class Player : MonoBehaviour
 
 	void OnEnable()
 	{
-		ActionAudioPlayer.instance.damaged += Particles;
+		ActionEventPlayer.instance.damaged += Particles;
 	}
 	void OnDisable()
 	{
-		ActionAudioPlayer.instance.damaged -= Particles;
+		ActionEventPlayer.instance.damaged -= Particles;
 	}
 }
