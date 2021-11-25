@@ -18,5 +18,6 @@ public class EnemyHPHUD : MonoBehaviour
 		Vector2 newVec = size;
 		newVec.x = enemyRef.health / enemyRef.maxHealth * size.x;
 		fill.size = newVec;
+		fill.color = Color.red;
     }
 }

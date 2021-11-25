@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 		health = maxHealth;
 
 		//initialize explosives
+		//*
 		if (bombCount <= 0)
 			bombCount = 1;
 		for (int i = 0; i < bombCount; ++i) {
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour
 		}
 
 		temp = null;
+		//*/
 	}
 
     // Update is called once per frame
@@ -90,7 +92,20 @@ public class Player : MonoBehaviour
 
 		float hori = Input.GetAxis("Horizontal");
 		float verti = Input.GetAxis("Vertical");
-		
+
+		//direction control
+		if (hori != 0) {
+			if (SmoothFollow.movingRight && hori < 0f) {
+				SmoothFollow.movingRight = false;
+				transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+			}
+			if (!SmoothFollow.movingRight && hori > 0f) {
+				SmoothFollow.movingRight = true;
+				transform.rotation = Quaternion.identity;
+			}
+		}
+
+
 		//reset velocity
 		movement.y = rb.velocity.y;
 
@@ -134,21 +149,27 @@ public class Player : MonoBehaviour
 		if (Input.GetButtonUp("Attack")) {
 			attackBox.enabled = false;
 			childTrans.localPosition = Vector3.zero;
-			childTrans.localScale = Vector3.one * 0.9f + Vector3.back * 0.4f;
+			childTrans.localScale = Vector3.one * 0.3f + Vector3.back * 0.1f;
 		}
 		if (Input.GetButtonDown("Bomb")) {
 			tempVec = Vector2.right * hori + Vector2.up * verti;
+			//*
 			temp = bombPool.Dequeue();
 			temp.GetComponent<Explosive>().Init(
 				(tempVec * (Vector2.right * speed + Vector2.up * 3f)) + Vector2.up * 10f,
 				transform.position + (Vector3)tempVec
 			);
 			bombPool.Enqueue(temp);
+			/*/
+			Instantiate(bombPrefab).GetComponent<Explosive>().Init(
+				(tempVec * (Vector2.right * speed + Vector2.up * 3f)) + Vector2.up * 10f,
+				transform.position + (Vector3)tempVec
+			);
+			//*/
 		}
 
 		//update camera stuff
 		SmoothFollow.advancedFocus = Mathf.Abs(movement.x) > 1f;
-		SmoothFollow.movingRight = movement.x > 0;
 
 		rb.velocity = movement;
 	}

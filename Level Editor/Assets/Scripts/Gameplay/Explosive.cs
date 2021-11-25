@@ -14,7 +14,11 @@ public class Explosive : MonoBehaviour
 		if (counter > 0 && !EditorManager.GetPaused()) {
 			counter -= Time.deltaTime;
 			if (counter <= 0) {
+				//*
 				gameObject.SetActive(false);
+				/*/
+				Destroy(gameObject);
+				//*/
 			}
 		}
 	}

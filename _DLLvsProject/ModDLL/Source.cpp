@@ -7,12 +7,15 @@
 // Link following functions C-style (required for plugins)
 extern "C"
 {
-	struct Vector3 {
-		float x;
-		float y;
-		float z;
+	struct Color {
+		float r;
+		float g;
+		float b;
+		float a;
 	};
 	
+	//stats dll
+	/*
 	float EXPORT_API getMaxHP()
 	{
 		srand(time(0));
@@ -49,5 +52,10 @@ extern "C"
 	{
 		return 1 + rand() % 20;
 	}
+	//*/
 	
+	//HP bar dll
+	float EXPORT_API GetBarWidth(float health, float maxHealth, float currentWidth, float maxWidth, float dt) {
+
+	}
 }
