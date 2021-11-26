@@ -57,15 +57,15 @@ extern "C"
 	//HP bar dll
 	float EXPORT_API GetBarWidth(float health, float maxHealth, float currentWidth, float maxWidth, float dt) {
 		//direct
-		return health / maxHealth * maxWidth;
+		//return health / maxHealth * maxWidth;
 		//smoothed motion
-		//return health / maxHealth * maxWidth * dt + (1 - dt) * currentWidth;
+		return health / maxHealth * maxWidth * dt + (1 - dt) * currentWidth;
 	}
 
 	Color EXPORT_API GetColour(float percentage) {
 		//Makes it red
-		return Color{1.f, 0.f, 0.f, 1.f};
+		//return Color{1.f, 0.f, 0.f, 1.f};
 		//percentage based
-		//return Color{ 1 - percentage, percentage, 0.f, 1.f};
+		return Color{ 1 - percentage, percentage, 0.f, 1.f};
 	}
 }

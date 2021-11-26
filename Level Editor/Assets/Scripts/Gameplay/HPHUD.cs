@@ -11,14 +11,16 @@ public class HPHUD : MonoBehaviour
     public Image HPBar;
     public Player playerRef;
 
-	[DllImport("UIDLL-smoothed")]
-	private static extern float GetBarWidth(float health, float maxHealth, float currentWidth, float maxWidth, float dt);
+	[DllImport("UIDL")]
+	public static extern float GetBarWidth(float health, float maxHealth, float currentWidth, float maxWidth, float dt);
+
+	[DllImport("UIDLL")]
+	public static extern Color GetColour(float percentage);
 
     // Update is called once per frame
     void Update()
     {
         HP.text = "Health: " + playerRef.health;
 		HPBar.fillAmount = GetBarWidth(playerRef.health, playerRef.maxHealth, HPBar.fillAmount, 1f, Time.deltaTime);
-
     }
 }

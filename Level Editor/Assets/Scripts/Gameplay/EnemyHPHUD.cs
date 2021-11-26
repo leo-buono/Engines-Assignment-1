@@ -9,8 +9,6 @@ public class EnemyHPHUD : MonoBehaviour
 	public Vector2 size = Vector2.right * 2f + Vector2.up * 0.5f;
 	public EnemyAI enemyRef;
 
-	[DllImport("UIDLL-smoothed")]
-	private static extern Color GetColour(float percentage);
 	private void Start()
 	{
 		fill.size = size;
@@ -21,6 +19,6 @@ public class EnemyHPHUD : MonoBehaviour
 		Vector2 newVec = size;
 		newVec.x = enemyRef.health / enemyRef.maxHealth * size.x;
 		fill.size = newVec;
-		fill.color = GetColour(enemyRef.health / enemyRef.maxHealth);
+		fill.color = HPHUD.GetColour(enemyRef.health / enemyRef.maxHealth);
     }
 }
