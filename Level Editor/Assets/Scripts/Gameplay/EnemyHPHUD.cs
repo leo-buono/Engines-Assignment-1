@@ -17,8 +17,8 @@ public class EnemyHPHUD : MonoBehaviour
     void Update()
     {
 		Vector2 newVec = size;
-		newVec.x = enemyRef.health / enemyRef.maxHealth * size.x;
+		newVec.x = HPHUD.GetBarWidth(enemyRef.health, enemyRef.maxHealth, fill.size.x, size.x, Time.deltaTime * 3f);
 		fill.size = newVec;
-		fill.color = HPHUD.GetColour(enemyRef.health / enemyRef.maxHealth);
+		fill.color = HPHUD.GetColour(fill.size.x / size.x);
     }
 }

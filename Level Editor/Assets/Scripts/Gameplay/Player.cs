@@ -141,15 +141,14 @@ public class Player : MonoBehaviour
 		}
 		//attack
 		if (Input.GetButtonDown("Attack")) {
-			attackBox.offset = Vector2.right * hori + Vector2.up * verti;
 			childTrans.localPosition = Vector3.right * hori + Vector3.up * verti;
 			childTrans.localScale = Vector3.one * 1.5f + Vector3.back * 0.7f;
 			attackBox.enabled = true;
 		}
 		if (Input.GetButtonUp("Attack")) {
-			attackBox.enabled = false;
 			childTrans.localPosition = Vector3.zero;
 			childTrans.localScale = Vector3.one * 0.3f + Vector3.back * 0.1f;
+			attackBox.enabled = false;
 		}
 		if (Input.GetButtonDown("Bomb")) {
 			tempVec = Vector2.right * hori + Vector2.up * verti;

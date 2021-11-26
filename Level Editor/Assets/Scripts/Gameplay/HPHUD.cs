@@ -11,7 +11,7 @@ public class HPHUD : MonoBehaviour
     public Image HPBar;
     public Player playerRef;
 
-	[DllImport("UIDL")]
+	[DllImport("UIDLL")]
 	public static extern float GetBarWidth(float health, float maxHealth, float currentWidth, float maxWidth, float dt);
 
 	[DllImport("UIDLL")]
@@ -21,6 +21,6 @@ public class HPHUD : MonoBehaviour
     void Update()
     {
         HP.text = "Health: " + playerRef.health;
-		HPBar.fillAmount = GetBarWidth(playerRef.health, playerRef.maxHealth, HPBar.fillAmount, 1f, Time.deltaTime);
+		HPBar.fillAmount = GetBarWidth(playerRef.health, playerRef.maxHealth, HPBar.fillAmount, 1f, Time.deltaTime * 3f);
     }
 }
