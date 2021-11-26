@@ -66,6 +66,6 @@ extern "C"
 		//Makes it red
 		return Color{1.f, 0.f, 0.f, 1.f};
 		//percentage based
-		//return Color{percentage, 1 - percentage, 0.f, 1.f};
+		//return Color{ 1 - percentage, percentage, 0.f, 1.f};
 	}
 }
