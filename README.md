@@ -31,14 +31,14 @@ In the hub, you can see models of our level on either side of the room. In the c
 
 Screenshots and UML:
 
-Normal UI  
-![Normal UI](docs/Editor.png)
-
-UI after some changes  
-![Stuff done](docs/Editor2.png)
-
 Normal View  
 ![In Game](docs/GameView.png)
+
+UI after some changes  
+![Normal UI](docs/Editor.png)
+
+Game After those changes  
+![Stuff done](docs/Editor2.png)
 
 
 UML:  
