@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>90</x><y>293</y><w>280</w><h>660</h></coordinates><panel_attributes>Player&lt;GameObject&gt;
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>90</x><y>103</y><w>280</w><h>660</h></coordinates><panel_attributes>Player&lt;GameObject&gt;
 --
 + GameObject prefab
 - float speed
@@ -41,7 +41,7 @@ Update() : void
 + ChangeHealth(float change) : void
 + Particles() : void
 OnEnable() : void
-OnDisable() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>673</y><w>100</w><h>30</h></coordinates><panel_attributes>MonoBehaviour</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>923</y><w>280</w><h>310</h></coordinates><panel_attributes>EnemyAI&lt;GameObject&gt;
+OnDisable() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>483</y><w>100</w><h>30</h></coordinates><panel_attributes>MonoBehaviour</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>733</y><w>280</w><h>310</h></coordinates><panel_attributes>EnemyAI&lt;GameObject&gt;
 --
 - float speed
 + float health
@@ -61,7 +61,7 @@ FixedUpdate() : void
 - OnTriggerEnter2D(Collider2D collision) : void
 OnEnable() : void
 OnDisable() : void
-OnDestroy() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>653</y><w>590</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>570;20;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>273</y><w>280</w><h>150</h></coordinates><panel_attributes>Crate&lt;GameObject&gt;
+OnDestroy() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>463</y><w>590</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>570;20;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>83</y><w>280</w><h>150</h></coordinates><panel_attributes>Crate&lt;GameObject&gt;
 --
 - Rigidbody2D rb
 - bool solid
@@ -70,7 +70,7 @@ Start() : void
 FixedUpdate() : void
 + Launch(Vector2 direction): void
 - OnCollisionEnter2D(Collision2D collision) : void
-- OnTriggerEnter2D(Collider2D collider) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>980</x><y>693</y><w>30</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>413</y><w>260</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;260;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>673</y><w>280</w><h>190</h></coordinates><panel_attributes>Main Camera&lt;GameObject&gt;
+- OnTriggerEnter2D(Collider2D collider) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>980</x><y>503</y><w>30</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>223</y><w>260</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;260;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>483</y><w>280</w><h>190</h></coordinates><panel_attributes>Main Camera&lt;GameObject&gt;
 SmoothFollow
 --
 + Transform target
@@ -82,7 +82,7 @@ SmoothFollow
 + static bool advancedFocus
 - float xOffsetTarget
 --
-Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>693</y><w>270</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>703</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1070</x><y>963</y><w>280</w><h>200</h></coordinates><panel_attributes>EnemySpawner&lt;GameObject&gt;
+Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>503</y><w>270</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>513</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1070</x><y>773</y><w>280</w><h>200</h></coordinates><panel_attributes>EnemySpawner&lt;GameObject&gt;
 --
 + GameObject EnemyPrefab
 + float timerMin
@@ -95,12 +95,12 @@ Update() : void</panel_attributes><additional_attributes></additional_attributes
 Start() : void
 Update() : void
 + AddEnemy(GameObject enemy) : void
-+ RemoveEnemy(GameObject enemy) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>1043</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>693</y><w>100</w><h>290</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;270</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>433</y><w>280</w><h>80</h></coordinates><panel_attributes>TouchWin&lt;GameObject&gt;
++ RemoveEnemy(GameObject enemy) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>853</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>503</y><w>100</w><h>290</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;270</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>243</y><w>280</w><h>80</h></coordinates><panel_attributes>TouchWin&lt;GameObject&gt;
 --
 GameObject player
 --
 Start() : void
-OnCollisionEnter2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>473</y><w>260</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>473</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>933</y><w>400</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;10;380;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>811</y><w>130</w><h>30</h></coordinates><panel_attributes>Cube&lt;GameObject&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>231</y><w>150</w><h>30</h></coordinates><panel_attributes>Canvas&lt;GameObject&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>991</y><w>210</w><h>160</h></coordinates><panel_attributes>ActionEventPlayer&lt;GameObejct&gt;
+OnCollisionEnter2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>283</y><w>260</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>283</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>743</y><w>400</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;10;380;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>621</y><w>130</w><h>30</h></coordinates><panel_attributes>Cube&lt;GameObject&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>41</y><w>150</w><h>30</h></coordinates><panel_attributes>Canvas&lt;GameObject&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>801</y><w>210</w><h>160</h></coordinates><panel_attributes>ActionEventPlayer&lt;GameObejct&gt;
 --
 __+ ActionAudioPlayer instance__
 + event Action died
@@ -110,14 +110,14 @@ __+ ActionAudioPlayer instance__
 Awake() : void
 + Die() : void
 + Damaged() : void
-+ Music() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>941</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>361</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>21</x><y>971</y><w>210</w><h>120</h></coordinates><panel_attributes>DeathAudio&lt;GameObject&gt;
++ Music() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>751</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>171</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>21</x><y>781</y><w>210</w><h>120</h></coordinates><panel_attributes>DeathAudio&lt;GameObject&gt;
 --
 - AudioSource _audiosource;
 --
 Awake() : void
 OnEnable() : void
 OnDisable() : void
-- PlayAudio() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>961</x><y>401</y><w>150</w><h>150</h></coordinates><panel_attributes>/SceneChanger/
+- PlayAudio() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>961</x><y>211</y><w>150</w><h>150</h></coordinates><panel_attributes>/SceneChanger/
 --
 __+ bool mainGame__
 --
@@ -126,21 +126,21 @@ __+ StartTutorial) : void__
 __+ Retry() : void__
 __+ LoadMenu() : void__
 __+ LoadDed() : void__
-__+ quit() : void__</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>1021</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>501</x><y>971</y><w>210</w><h>120</h></coordinates><panel_attributes>MusicPlayer&lt;GameObject&gt;
+__+ quit() : void__</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>831</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>501</x><y>781</y><w>210</w><h>120</h></coordinates><panel_attributes>MusicPlayer&lt;GameObject&gt;
 --
 - AudioSource _audiosource;
 --
 Awake() : void
 OnEnable() : void
 OnDisable() : void
-- PlayAudio() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>1041</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>523</y><w>280</w><h>120</h></coordinates><panel_attributes>HPowerUp&lt;GameObject&gt;
+- PlayAudio() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>851</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>333</y><w>280</w><h>120</h></coordinates><panel_attributes>HPowerUp&lt;GameObject&gt;
 --
 __+ float HPup__
 __+ float speed__
 --
 __+ getHPup() : void__
 OnTriggerEnter2D(Collision2D collision) : void
-Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>583</y><w>260</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>543</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>223</y><w>370</w><h>140</h></coordinates><panel_attributes>HPText&lt;GameObject&gt;
+Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>393</y><w>260</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>353</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>33</y><w>370</w><h>140</h></coordinates><panel_attributes>HPText&lt;GameObject&gt;
 --
 + Text HP
 + Image HPBar
@@ -149,29 +149,29 @@ Update() : void</panel_attributes><additional_attributes></additional_attributes
 __+ GetBarWidth(float hp, float mhp, float cw, float mw, float dt) : float__
 __+ GetColour(float percentage) : Color__
 Start() : void
-- UpdateHUD() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>241</y><w>490</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;50;10;10;470;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>231</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>991</x><y>601</y><w>130</w><h>50</h></coordinates><panel_attributes>PrefabFactory
+- UpdateHUD() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>51</y><w>490</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;50;10;10;470;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>41</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>991</x><y>411</y><w>130</w><h>50</h></coordinates><panel_attributes>PrefabFactory
 --
-GameObject prefab</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>381</y><w>320</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1070</x><y>641</y><w>50</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>30;320;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>641</y><w>70</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>50;170;11;10</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>541</y><w>320</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1151</x><y>591</y><w>140</w><h>50</h></coordinates><panel_attributes>/Spawnable/
+GameObject prefab</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>191</y><w>320</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1070</x><y>451</y><w>50</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>30;320;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>451</y><w>70</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>50;170;11;10</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>351</y><w>320</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1151</x><y>401</y><w>140</w><h>50</h></coordinates><panel_attributes>/Spawnable/
 --
-+ SpawnThing() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>613</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;10;41;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1451</x><y>851</y><w>130</w><h>80</h></coordinates><panel_attributes>/FunctionData/
++ SpawnThing() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>423</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;10;41;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1451</x><y>661</y><w>130</w><h>80</h></coordinates><panel_attributes>/FunctionData/
 --
 + Execute() : void
 + Undo() : void
-+ Delete() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1431</x><y>1081</y><w>190</w><h>80</h></coordinates><panel_attributes>ScaleThing
++ Delete() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1431</x><y>891</y><w>190</w><h>80</h></coordinates><panel_attributes>ScaleThing
 --
 - Vector3 oldScale
 - Vector3 newScale
-- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1310</x><y>883</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;10;141;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1131</x><y>851</y><w>190</w><h>80</h></coordinates><panel_attributes>SpawnThing
+- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1310</x><y>693</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;10;141;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1131</x><y>661</y><w>190</w><h>80</h></coordinates><panel_attributes>SpawnThing
 --
 - Spawnable factory
 - Vector3 position
-- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1250</x><y>631</y><w>40</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>11;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1460</x><y>923</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;60;11;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1361</x><y>981</y><w>190</w><h>50</h></coordinates><panel_attributes>DeleteThing
+- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1250</x><y>441</y><w>40</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>11;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1460</x><y>733</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;60;11;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1361</x><y>791</y><w>190</w><h>50</h></coordinates><panel_attributes>DeleteThing
 --
-- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1550</x><y>923</y><w>30</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;160;11;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1671</x><y>851</y><w>190</w><h>90</h></coordinates><panel_attributes>MoveThing
+- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1550</x><y>733</y><w>30</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>11;160;11;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1671</x><y>661</y><w>190</w><h>90</h></coordinates><panel_attributes>MoveThing
 --
 - Vector3 oldPosition
 - Vector3 newPosition
-- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1570</x><y>883</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>101;10;11;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1311</x><y>642</y><w>270</w><h>170</h></coordinates><panel_attributes>CommandManger&lt;GameObject&gt;
+- GameObject reference</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1570</x><y>693</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>101;10;11;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1311</x><y>452</y><w>270</w><h>170</h></coordinates><panel_attributes>CommandManger&lt;GameObject&gt;
 --
 - List&lt;FunctionData&gt; history
 - Queue&lt;FunctionData&gt; queue
@@ -181,7 +181,7 @@ Awake() : void
 Start() : void
 Update() : void
 + QueueFunction(FunctionData function) : void
-+ Clear() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>801</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1280</x><y>601</y><w>100</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>11;10;80;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1611</x><y>222</y><w>270</w><h>590</h></coordinates><panel_attributes>EditorManager&lt;CameObject&gt;
++ Clear() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>611</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1280</x><y>411</y><w>100</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>11;10;80;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1611</x><y>32</y><w>270</w><h>590</h></coordinates><panel_attributes>EditorManager&lt;CameObject&gt;
 --
 + Camera gameCamera
 + Camera editorCamera
@@ -219,7 +219,7 @@ __- GetPaused() : bool__
 + ClearHistory() : void
 + UpdateCamera() : void
 + GetMousePos() : Vector3
-+ SetMoveHandle(GameObject obj) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>231</y><w>370</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1570</x><y>671</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1131</x><y>372</y><w>270</w><h>200</h></coordinates><panel_attributes>ClickDetection&lt;GameObject&gt;
++ SetMoveHandle(GameObject obj) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>41</y><w>370</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1570</x><y>481</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1131</x><y>182</y><w>270</w><h>200</h></coordinates><panel_attributes>ClickDetection&lt;GameObject&gt;
 --
 + RectTransform UItransform
 + int pixelHeight
@@ -232,11 +232,11 @@ __- GetPaused() : bool__
 Start() : void
 Update() : void
 + ConvertedMousePos() : Vector2
-- AABBTest(Vector2 input) : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>461</y><w>240</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>220;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>251</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1251</x><y>282</y><w>200</w><h>70</h></coordinates><panel_attributes>SliderSelect&lt;GameObject&gt;
+- AABBTest(Vector2 input) : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>271</y><w>240</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>220;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>61</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1251</x><y>92</y><w>200</w><h>70</h></coordinates><panel_attributes>SliderSelect&lt;GameObject&gt;
 --
 + EditorManager manager
 --
-OnSelect(BaseEventData) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1440</x><y>301</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>251</y><w>60</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>707</x><y>734</y><w>270</w><h>160</h></coordinates><panel_attributes>Explosive&lt;GameObejct&gt;
+OnSelect(BaseEventData) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1440</x><y>111</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>61</y><w>60</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>707</x><y>544</y><w>270</w><h>160</h></coordinates><panel_attributes>Explosive&lt;GameObejct&gt;
 --
 + Collider2D explosion
 + RigidBody2D bod
@@ -246,11 +246,11 @@ OnSelect(BaseEventData) : void</panel_attributes><additional_attributes></additi
 --
 Update() : void
 + Init(Vector2 velo, Vector3 position) : void
-- OnCollisionEnter2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>693</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>871</y><w>370</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>350;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>881</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>451</y><w>320</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;160</additional_attributes></element><element><id>Relation</id><coordinates><x>1000</x><y>641</y><w>70</w><h>300</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;280;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>251</y><w>50</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;150;30;10</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>241</y><w>280</w><h>910</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>260;890;10;890;20;10;260;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>501</x><y>1101</y><w>210</w><h>130</h></coordinates><panel_attributes>EnemyHPHUD&lt;GameObject&gt;
+- OnCollisionEnter2D(Collision2D collision) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>930</x><y>503</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>681</y><w>370</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>350;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>691</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>261</y><w>320</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;300;160</additional_attributes></element><element><id>Relation</id><coordinates><x>1000</x><y>451</y><w>70</w><h>300</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;280;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>61</y><w>50</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;150;30;10</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>51</y><w>280</w><h>910</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>260;890;10;890;20;10;260;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>501</x><y>911</y><w>210</w><h>130</h></coordinates><panel_attributes>EnemyHPHUD&lt;GameObject&gt;
 --
 + SpriteRenderer fill
 + Vector2 size
 + EnemyAI enemyRef
 --
 Start() : void
-Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>1141</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>943</y><w>370</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;50;10;10;350;10</additional_attributes></element></diagram>
+Update() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>951</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>753</y><w>370</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.&gt;&gt;</panel_attributes><additional_attributes>10;50;10;10;350;10</additional_attributes></element></diagram>
