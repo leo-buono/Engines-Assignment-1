@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
     [DllImport("ModDLL")]
     public static extern float getDamage();
 
-	public GameObject prefab;
+	public static Player mainPlayer;
+
+	public GameObject particlePrefab;
 	private float speed = 5f;
 	public float jumpStrength = 10f;
 
@@ -220,15 +222,18 @@ public class Player : MonoBehaviour
 	}
 
 	public void Particles() {
-		Destroy(Instantiate(prefab, transform.position, Quaternion.identity), 2f);
+		Destroy(Instantiate(particlePrefab, transform.position, Quaternion.identity), 2f);
 	}
 
 	void OnEnable()
 	{
+		mainPlayer = this;
 		ActionEventPlayer.instance.damaged += Particles;
 	}
 	void OnDisable()
 	{
+		if (mainPlayer == this)
+			mainPlayer = null;
 		ActionEventPlayer.instance.damaged -= Particles;
 	}
 }

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(RectTransform))]
 public class ClickDetection : MonoBehaviour
 {
-	public RectTransform UItransform;
-	public int pixelHeight = 1080;
+	//public RectTransform UItransform;
+	//public int pixelHeight = 1080;
 	public EditorManager manager;
-	public Vector2 lowerBound = -Vector2.one;
-	public Vector2 upperBound = Vector2.one;
+	private Vector2 lowerBound;
+	private Vector2 upperBound;
 
 	public GameObject prefab;
 	PrefabFactory factory = new PrefabFactory();
@@ -19,8 +19,15 @@ public class ClickDetection : MonoBehaviour
     void Start()
     {
 		factory.prefab = prefab;
-		lowerBound += (Vector2)UItransform.localPosition;
-		upperBound += (Vector2)UItransform.localPosition;
+		//lowerBound += (Vector2)UItransform.localPosition;
+		//upperBound += (Vector2)UItransform.localPosition;
+
+		RectTransform trans = GetComponent<RectTransform>();
+		Vector2 scale = manager.editorCamera.pixelRect.size / trans.GetComponentInParent<CanvasScaler>().referenceResolution;
+		lowerBound = manager.editorCamera.pixelRect.size * trans.anchorMin
+			+ (trans.anchoredPosition - (Vector2.one - trans.pivot) * trans.rect.size) * scale;
+		upperBound = manager.editorCamera.pixelRect.size * trans.anchorMax
+			+ (trans.anchoredPosition + trans.pivot * trans.rect.size) * scale;
     }
 
     // Update is called once per frame
@@ -30,7 +37,8 @@ public class ClickDetection : MonoBehaviour
 
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			if (AABBTest(ConvertedMousePos())) {
+			//if (AABBTest(ConvertedMousePos())) {
+			if (AABBTest(Input.mousePosition)) {
 				SpawnThing spawn = new SpawnThing(factory, manager.GetMousePos());
 				spawn.Execute();
 				manager.SetMoveHandle(spawn.reference);
@@ -40,6 +48,7 @@ public class ClickDetection : MonoBehaviour
     }
 
 	//relative to Canvas data
+	/*
 	public Vector2 ConvertedMousePos()
 	{
 		Vector2 pos = manager.editorCamera.ScreenToViewportPoint(Input.mousePosition);
@@ -48,6 +57,7 @@ public class ClickDetection : MonoBehaviour
 		pos.x *= pixelHeight * 0.5f * manager.editorCamera.aspect;
 		return pos;
 	}
+	*/
 
 	bool AABBTest(Vector2 input) {
 		return (

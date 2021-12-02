@@ -166,16 +166,22 @@ public class EditorManager : MonoBehaviour
 		if (cameraDistance < 0f)
 			cameraDistance = 0f;
 
-		if (orthoToggle.isOn)
-		{
-			editorCamera.orthographicSize = cameraDistance;
-		}
 
 		speed = speedController.value;
 		Vector3 wasd = editorCamera.transform.position;
+		if (Input.GetButtonDown("Snap")) {
+			//wasd = GameObject.Find("Player").transform.position;
+			wasd = Player.mainPlayer.transform.position;
+		}
 		wasd.x += Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 		wasd.y += Input.GetAxis("Vertical") * speed * Time.deltaTime;
-		wasd.z = -cameraDistance;
+		if (orthoToggle.isOn) {
+			editorCamera.orthographicSize = cameraDistance;
+			wasd.z = -10f;
+		}
+		else {
+			wasd.z = -cameraDistance;
+		}
 		editorCamera.transform.position = wasd;
 	}
 
