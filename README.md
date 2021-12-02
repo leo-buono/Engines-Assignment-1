@@ -9,17 +9,18 @@ Jaden Bhakti (100696653)
 46 word description:  
 This a 2.5D platformer with level editing capabilities, that has a player that can throw bombs and walljump, as well as enemies, all controlled by DLLs for UI and stats. The editor provides the base tools required to create levels with enemy spawners, healthpacks and crates.
 
-New Video Link: https://youtu.be/8509LK0H0Bc  
+Assignment 4 Video Link: https://youtu.be/8509LK0H0Bc  
 
 To mod the game, grab the dll wanted from the DLLs folder and paste it into the plugins folder of Unity, then rename it ModDLL.dll or UIDLL.dll
 
-We had a whopping 5 Design patterns implemented:  
+We had a whopping 5/6(?) Design patterns implemented:  
 Singleton in the event and command managers  
 Observer using C# events  
 Command using the FunctionData interface as base  
 Factory using the Spawnable interface as base  
-Object Pooling in the bomb system (player class)
-
+Object Pooling in the bomb system (Player.cs)  
+----we would've used Object Pooling with factories if we implemented factory into spawners, but that didn't follow through because factories were hard to pass around
+Dirty flag(?) in that pausing disables many systems (including physics, which is handled in EditorManager.cs)
 
 Old description:
 
