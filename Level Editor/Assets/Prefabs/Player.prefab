@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63d459137aa5824ab7c2c547f276d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 149044109486962228, guid: e3aca99ad9e7e154483df40632d6a230, type: 3}
+  particlePrefab: {fileID: 149044109486962228, guid: e3aca99ad9e7e154483df40632d6a230, type: 3}
   jumpStrength: 10
   wallSlideSpeed: 2
   accelSpeed: 5

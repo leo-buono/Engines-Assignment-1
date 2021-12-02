@@ -1,4 +1,4 @@
-Engines Assignment 4  
+# Engines Aligned Component Replacement  
 Entirety of JayPEG:  
 Jonathan Jay (100743575)  
 Matthew McPherson (100757379)  
@@ -60,6 +60,7 @@ Drag scale sliders to scale object
 Delete to delete selected object (if prompt appears)  
 Rename objects by clicking in the name box in the top right  
 Undo with Z, redo with R
+Left Shift or \ to snap camera to player
 
 
 To mod the game, grab the dll wanted from the DLLs folder and paste it into the plugins folder of Unity, then rename it ModDLL.dll or UIDLL.dll

@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
 		}
 		//attack
 		if (Input.GetButtonDown("Attack")) {
-			childTrans.localPosition = Vector3.right * hori + Vector3.up * verti;
+			childTrans.localPosition = transform.rotation * (Vector3.right * hori + Vector3.up * verti);
 			childTrans.localScale = Vector3.one * 1.5f + Vector3.back * 0.7f;
 			attackBox.enabled = true;
 		}

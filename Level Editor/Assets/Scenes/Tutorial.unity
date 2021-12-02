@@ -873,11 +873,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 78.5
+      value: 77.5
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.5
+      value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 4106541394843246996, guid: 251a5aa00c1a98148a04c5c32dca7df4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1668,6 +1668,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961292621504278779, guid: e3a1bc77e3b17a44ea4d06fd4ccc3f77, type: 3}
       propertyPath: maxCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961292621504278779, guid: e3a1bc77e3b17a44ea4d06fd4ccc3f77, type: 3}
+      propertyPath: timerMax
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961292621504278779, guid: e3a1bc77e3b17a44ea4d06fd4ccc3f77, type: 3}
+      propertyPath: timerMin
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6961292621504278781, guid: e3a1bc77e3b17a44ea4d06fd4ccc3f77, type: 3}
@@ -3761,8 +3769,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255590
+  m_fontColor: {r: 0.9016589, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4764,14 +4772,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click on a thing
+  m_text: 'Click to select Objects
 
-    to select it
-
-    Go to the wall blocking
-
-    the
-    path'
+    LShift or \ to snap to player'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

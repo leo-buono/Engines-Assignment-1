@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     [DllImport("ModDLL")]
     public static extern float getEnemyHP();
 
+	public float activeRange = 25f;
     private float speed = 5f;
 	public float health = 5f;
 	public float maxHealth = 5f;
@@ -38,6 +39,8 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+		rb.simulated = (Player.mainPlayer.transform.position - transform.position).magnitude < activeRange;
+
 		if (transform.position.y < bottom) {
 			Destroy(gameObject);
 			return;

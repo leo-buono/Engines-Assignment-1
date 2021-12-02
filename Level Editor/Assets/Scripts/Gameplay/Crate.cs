@@ -39,7 +39,7 @@ public class Crate : MonoBehaviour
 		//player launches
 		if (collider.gameObject.layer == 6) {
 			collider.enabled = false;
-			Launch(collider.offset * 10 + Vector2.up * 5);
+			Launch((Vector2)(collider.transform.rotation * collider.transform.localPosition) * 10 + Vector2.up * 5);
 		}
 		//bombs kill
 		else if (collider.gameObject.layer == 9) {

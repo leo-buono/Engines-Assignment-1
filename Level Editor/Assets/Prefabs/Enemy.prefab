@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b74ab435dfbb2747bc6fc16de50d98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeRange: 50
   health: 5
   maxHealth: 5
   movingRight: 1

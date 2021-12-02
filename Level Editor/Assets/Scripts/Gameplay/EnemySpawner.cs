@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 	public GameObject EnemyPrefab;
+	public float activeRange = 25f;
+
 	public float timerMin = 5f;
 	public float timerMax = 10f;
 	public float counter = 0f;
@@ -22,7 +24,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (spawned.Count >= maxCount || EditorManager.GetPaused())	return;
+		if (spawned.Count >= maxCount || EditorManager.GetPaused()
+			|| (Player.mainPlayer.transform.position - transform.position).magnitude > activeRange)	return;
 
 		counter -= Time.deltaTime;
         if (counter <= 0) {
