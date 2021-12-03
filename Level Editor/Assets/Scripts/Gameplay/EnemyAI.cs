@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
 
     void FixedUpdate()
     {
-		rb.simulated = (Player.mainPlayer.transform.position - transform.position).magnitude < activeRange;
+		rb.simulated = ((Player.mainPlayer.transform.position - transform.position).magnitude < activeRange) || EditorManager.GetPaused();
 
 		if (transform.position.y < bottom) {
 			Destroy(gameObject);
